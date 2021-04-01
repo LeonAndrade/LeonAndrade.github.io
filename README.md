@@ -255,11 +255,3 @@ This can mean that we have products with same code but variations, or that some 
 
 ## Dashboard
 Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance.
-
-<iframe
-    src="http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4"
-    frameborder="0"
-    width="800"
-    height="600"
-    allowtransparency
-></iframe>
