@@ -13,8 +13,8 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 ## Understanding the data:
 
-- What are the dimensions of the dataset?
 
+- What are the dimensions of the dataset?
 ```sql
 SELECT
     'online_retail' AS table,
@@ -37,9 +37,33 @@ online_retail|1,067,371|8
 
 
 
+We now know that our data contains 8 columns and around 1 million rows.
+But that information alone is not enough, let's see what else can help us understand
+what our data contains.
 
 
+- List table columns and data types:
+```sql
+SELECT
+    column_name,
+    data_type
+FROM information_schema.columns
+WHERE table_name = 'online_retail'
+```
 
+column_name|data_type
+:----:|:------------------------------:
+invoice|Character varying
+stockcode|character varying
+description|character varying
+quantity|bigint
+invoicedate|timestamp without time zone
+price|double precision
+customer_id|double precision
+country	character|varying
+
+
+- Are there any null values?
 ```sql
 SELECT
     sum(case when invoice     is null then 1 else 0 end) as invoice_null,
