@@ -75,8 +75,7 @@ country|0
 
 
 <br/><br/>
-A few product descriptions hold no data, but that doesn't seem to be of much relevance,
-but looking at our `customer_id` columns, it seems that about a 1/4 of the values are missing, that information is very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer.
+Looking at our `customer_id` columns, it seems that about a 1/4 of the values are missing, that information is very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer.
 <br/><br/>
 
 
