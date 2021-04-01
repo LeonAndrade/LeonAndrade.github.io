@@ -9,7 +9,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 **Dashboard**: Metabase on Heroku
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
-
+<br/><br/>
 
 ## Understanding the Data
 ##### What are the dimensions of the dataset?
@@ -37,10 +37,49 @@ online_retail|1,067,371|8
 Now we know that our dataset has **8 columns** and around **1 million rows**.<br/>
 But that information alone is not enough since it doesn't tell us **_what_** is this data about.<br/>
 
-So let's see what else we can find about this dataset!
+So let's see what else we can find about this dataset...
 <br/><br/>
 
-##### What attributes we have and which data types they hold?
+##### Are there any null/missing values?
+```sql
+SELECT
+SELECT 'invoice'     as column_name, sum(case when invoice     is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'stockcode'   as column_name, sum(case when stockcode   is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+select 'description' as column_name, sum(case when description is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'quantity'    as column_name, sum(case when quantity    is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'invoicedate' as column_name, sum(case when invoicedate is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'price'       as column_name, sum(case when price       is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'customer_id' as column_name, sum(case when customer_id is null then 1 else 0 end) as null_values FROM online_retail
+UNION
+SELECT 'country'     as column_name, sum(case when country     is null then 1 else 0 end) as null_values FROM online_retail
+order by null_values desc
+FROM online_retail
+```
+column_name|null_values
+:---------:|:---------:
+customer_id|243007
+description|4382
+invoice|0
+stockcode|0
+invoicedate|0
+price|0
+quantity|0
+country|0
+
+
+<br/><br/>
+It seems that around 1/4 of the customer_ids has no data, and
+<br/><br/>
+
+
+
+##### What are the attributes (columns) and which data types they hold?
 ```sql
 SELECT
     column_name,
@@ -73,21 +112,10 @@ Also, knowing the data types we can now he can start trying to ask some basic qu
   - Which day had the most transactions happening?
   - What is the average value of a transaction?
   - Which products are most popular?
+
 </br></br>
 
-##### Are there any null values?
-```sql
-SELECT
-    sum(case when invoice     is null then 1 else 0 end) as invoice_null,
-    sum(case when stockcode   is null then 1 else 0 end) as stockcode_null,
-    sum(case when description is null then 1 else 0 end) as description_null,
-    sum(case when quantity    is null then 1 else 0 end) as quantity_null,
-    sum(case when invoicedate is null then 1 else 0 end) as invoicedate_null,
-    sum(case when price       is null then 1 else 0 end) as price_null,
-    sum(case when customer_id is null then 1 else 0 end) as customer_id_null,
-    sum(case when country     is null then 1 else 0 end) as country_null
-FROM online_retail
-```
+
 
 
 
