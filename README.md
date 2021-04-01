@@ -103,16 +103,16 @@ country	   |character varying
 </br></br>
 From a quick look at this we can say that this data is about orders made by customers.
 
-  - **Products**:
+  - Products:
     - `stockcode`: Categorical / Serial. It seems to be the unique ID of a product.
     - `price`: Quantitative. Assuming its the price for that row's `quantity` value.
     - `description`: Categorical. Description of the product.
 
-  - **Customers**:
+  - Customers:
     - `customer_id`: Serial. Unique ID of a customer.
     - `country`: Categorical. Assuming it's the country of origin for an invoice/customer.
 
-  - **Orders**:
+  - Orders:
     - `invoice`: Serial. Unique ID of each order. A single order can have multiple products.
     - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of the customers are from the UK.
     - `quantity`: Quantitative. Number of items ordered for any given product on an invoice.
@@ -121,11 +121,11 @@ From a quick look at this we can say that this data is about orders made by cust
 
 ## Understanding the Context
 
-Now that we know more about what data and how much of it we have, it's time to ask some more questions and try to get a sense of the context.
+Now that we know more about what data and how much of it we have, it's time to ask some more questions to get a sense of context.
 We want to use our data to answer some basic **_who_**, **_when_**, **_where_**, **_what_** and **_how many/much_** questions.
 <br/><br/>
 
-- How many unique values?
+#### How many unique values?
 ```sql
 SELECT 'invoice'     as column_name, count(distinct invoice)     as n_unique FROM online_retail
 UNION
@@ -158,7 +158,7 @@ country    |43
 
 <br/><br/>
 
-**How many different customers have bought a product from the company?**
+#### How many different customers have bought a product from the company?**
 
 `5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 <br/><br/>
