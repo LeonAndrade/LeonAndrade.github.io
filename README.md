@@ -4,8 +4,11 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 ### Overview
 
-**Database**: AWS RDS Postgres instance (for more information: https://aws.amazon.com/rds/postgresql/)
-**Dashboard**: Metabase on Heroku (for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
+**Database**: AWS RDS Postgres instance
+> (for more information: https://aws.amazon.com/rds/postgresql/)
+
+**Dashboard**: Metabase on Heroku
+>(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
 
 For it's simplicty i decided to uploade the data to an AWS RDS PostgreSQL instance, AWS offers a free tier that is suitable for simple projetcs and will be enough for the our needs.
