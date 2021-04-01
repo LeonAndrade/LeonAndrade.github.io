@@ -2,9 +2,9 @@
 
 - [Overview](#verview)
 - [Understanding the Data](#understanding-the-data)
-  - [](#what-are-the-dimensions-of-the-dataset?)
-  - [](#are-there-any-null/missing-values)
-  - [](#what-are-the-attributes-(colums)-and-which-data-types-they-hold?)
+  - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset?)
+  - [Are there any missing values?](#are-there-any-null/missing-values)
+  - [What attributes and data types it contain?](#what-are-the-attributes-(colums)-and-which-data-types-they-hold?)
 - [Understanding the Context](#understanding-the-context)
 
 ## Overview
