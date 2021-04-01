@@ -123,6 +123,7 @@ From a quick look at this we can say that this data is about orders made by cust
 
 Now that we know more about what data and how much of it we have, it's time to ask some more questions and try to get a sense of the context.
 We want to use our data to answer some basic **_who_**, **_when_**, **_where_**, **_what_** and **_how many/much_** questions.
+<br/><br/>
 
 - How many unique values?
 ```sql
