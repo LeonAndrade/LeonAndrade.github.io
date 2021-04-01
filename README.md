@@ -292,6 +292,36 @@ It seems even when grouping by weeks, december 2010 had a great week of sales. A
 
 #### What is the average value of a transaction?
 
+By transactions we are assuming the sum of prices for a single invoice.
+_(obs: there are a few prices with negative value and a description os adjusted bad debit, so we are going to disconsider all negative prices)_
+```sql
+with a as (
+
+	select
+		invoice,
+		sum(price) as sum_price
+	from online_retail
+	where price > 0
+	group by 1
+	order by 2 desc
+
+)
+
+select 'Min'    as measure, round(min(sum_price)::numeric,2)         as value from a
+union
+select 'Avg'    as measure, round(avg(sum_price)::numeric,2)         as value from a
+union
+select 'Max'    as measure, round(max(sum_price)::numeric,2)         as value from a
+union
+select 'StdDev' as measure, round(stddev_samp(sum_price)::numeric,2) as value from a
+```
+measure|value
+:-----:|:---:
+Min    |0.01
+StdDev |532.73
+Max    |38970.00
+Avg    |105.88
+
 <br/><br/>
 
 #### Which products are most popular?
