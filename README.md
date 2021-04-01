@@ -206,6 +206,26 @@ column_name|unique_values
 customer_id|5942
 
  _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
+
+We can take this one step further and get this count for the 5 coutries with most customers
+
+```sql
+SELECT
+    country,
+    COUNT(DISTINCT customer_id) AS n_unique
+FROM online_retail
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5
+```
+country       |unique_customers
+:------------:|:--------------:
+United Kingdom|5410
+Germany       |107
+France        |95
+Spain         |41
+Belgium       |29
+
 <br/><br/>
 
 #### Which day had the most transactions happening?
