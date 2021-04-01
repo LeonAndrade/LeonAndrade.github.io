@@ -1,5 +1,5 @@
 # Analytics Test - Online Retail
-### Overview
+## Overview
 
 This document describes the exploratory data analysis (EDA) for the online_reatail_II dataset.
 
@@ -9,15 +9,35 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 **Dashboard**: Metabase on Heroku
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
-### First things, first. Let's understand what data we have in hands.
+## First things, first. Let's understand what data we have in hands.
+
+
+
+
+## Now that we know what we are looking at, we can start to ask a few questions:
+
+**1. How many different customers have bought a product from the company?**
+
+
+
+**2. Which day had the most transactions happening?**
+
+
+
+**3. What is the average value of a transaction?**
+
+
+
+**4. Which products are most popular?**
 
 
 
 
 
-## Questions:
 
-#### 1. How many different customers have bought a product from the company?
+
+
+
 
 ```sql
 select count(distinct customer_id) from online_retail
@@ -84,10 +104,4 @@ stockcode|description|invoice_count
 22411|JUMBO SHOPPER VINTAGE RED PAISLEY|2297
 
 ## Dashboard
-Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance, feel free to go beyond the previous questions and bring more insights. You can use the BI tool of your preference to create the dashboard.
-
-## Observation
-We recommend that you upload the file into a database and use it to extract the information compiled when answering the questions and creating the dashboard, in the document include the queries you used to get to the answers.
-
-## Conclusion
-You will not have a chance to present this work personally so the document you send must be clear visually and demonstrate well how you developed your solution.
+Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance.
