@@ -8,7 +8,8 @@ This document describes my process for the Exploratory Data Analysis (EDA) of th
 
 If you are a visual learner or not so much into the "*tech-side*" of data, there is a dashboard with filters for you to play around and come up with some new insights!<br/>
 
-You can access the dashboard here: [Online Retail - Dashboard](https://dash-analytics-test.herokuapp.com/dashboard/1?quarter_and_year=Q1-2010)
+You can access the dashboard here:
+[Online Retail - Dashboard](http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4)
 
 #### Technologies used to deploy and share the analysis
 
