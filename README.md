@@ -13,7 +13,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 <br/>
 
 ## Understanding the Data
-##### What are the dimensions of the dataset?
+#### What are the dimensions of the dataset?
 ```sql
 SELECT
     'online_retail' AS table,
@@ -41,7 +41,7 @@ But that information alone is not enough since it doesn't tell us **_what_** is 
 So let's see what else we can find about this dataset...
 <br/><br/>
 
-##### Are there any null/missing values?
+#### Are there any null/missing values?
 ```sql
 SELECT
 SELECT 'invoice'     as column_name, sum(case when invoice     is null then 1 else 0 end) as null_values FROM online_retail
@@ -78,12 +78,12 @@ country|0
 It seems that about a 1/4 of the values are missing from our `customer_id` column.
 
 
-Although thay may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify a unique customer.
+Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify a unique customer.
 <br/><br/>
 
 
 
-##### What are the attributes (columns) and which data types they hold?
+#### What are the attributes (columns) and which data types they hold?
 ```sql
 SELECT
     column_name,
