@@ -2,10 +2,21 @@
 
 - [Overview](#verview)
 - [Understanding the Data](#understanding-the-data)
-  - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset?)
-  - [Are there any missing values?](#are-there-any-null/missing-values)
-  - [What attributes and data types it contain?](#what-are-the-attributes-(colums)-and-which-data-types-they-hold?)
+  - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset)
+  - [Are there any missing values?](#are-there-any-nullmissing-values)
+  - [What attributes and data types it contain?](#what-are-the-attributes-columns-and-which-data-types-they-hold)
 - [Understanding the Context](#understanding-the-context)
+  - [How many unique values?](how-many-unique-values)
+  - [How many different customers have bought a product from the company?](how-many-different-customers-have-bought-a-product-from-the-company)
+  - [Which day had the most transactions happening?](which-day-had-the-most-transactions-happening)
+  - [What is the average value of a transaction?](what-is-the-average-value-of-a-transaction)
+  - [Which products are most popular?](which-products-are-most-popular)
+  - [What time window are we looking at?](what-time-window-are-we-looking-at)
+  - [Are there any relevant outliers?](are-there-any-relevant-outliers)
+  - [What is the range of prices?](what-is-the-range-of-prices)
+  - [How many products per invoice?](how-many-products-per-invoice)
+  - [How many customers per country?](how-many-customers-per-country)
+- [Dashboard Queries]()
 
 ## Overview
 
