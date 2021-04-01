@@ -35,10 +35,7 @@ table        |rows     |columns
 online_retail|1,067,371|8
 
 <br/><br/>
-Now we know that our dataset has **8 columns** and around **1 million rows**.<br/>
-But that information alone is not enough since it doesn't tell us **_what_** is this data about.<br/>
-
-So let's see what else we can find about this dataset...
+This dataset has **8 columns** and around **1 million rows**. Let's see what else we can find...
 <br/><br/>
 
 #### Are there any null/missing values?
@@ -121,7 +118,7 @@ From a quick look at this we can say that this data is about orders made by cust
     - `quantity`: Quantitative. Number of items ordered for any given product of an invoice.
 
 
-With this new information we can now start asking some questions tosee if we can get any context from all this data.
+With this new information we can now start asking some questions to get some context from all this data.
 
   - How many unique values?
     - How many unique customers? (*note that maybe 1/4 of the total is not being considered because of the null values*)
