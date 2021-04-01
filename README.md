@@ -37,7 +37,7 @@ online_retail|1,067,371|8
 
 
 
-We now know that our data contains 8 columns and around 1 million rows.\n
+We now know that our data contains 8 columns and around 1 million rows.<\br>
 But that information alone is not enough, let's see what else can help us understand
 what our data contains.
 
