@@ -158,7 +158,6 @@ country    |43
   - How many different customers have bought a product from the company?
   > **5942** _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 
-  <br/><br/>
 
   - How many distinct products are being bought?
   > There are `5698` distinct `description` but only `5305` distinct `stockcode`.
