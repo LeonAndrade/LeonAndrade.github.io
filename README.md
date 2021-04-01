@@ -75,7 +75,10 @@ country|0
 
 
 <br/><br/>
-Looking at our `customer_id` columns, it seems that about a 1/4 of the values are missing, that information is very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer.
+It seems that about a 1/4 of the values are missing from our `customer_id` column.
+
+
+Although thay may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify a unique customer.
 <br/><br/>
 
 
