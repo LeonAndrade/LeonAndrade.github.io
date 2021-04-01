@@ -112,18 +112,30 @@ From a quick look at this we can say that this data is about orders made by cust
     - `description`: Categorical. Description of the product.
 
   - Customers:
-    - `customer_id`: Serial. unique id of a customer.
+    - `customer_id`: Serial. Unique id of a customer.
     - `country`: Categorical. Assuming it's the country of origin for an invoice/customer.
 
   - Orders:
-    - `invoice`: Serial. unique id of each order. same order can have multiple products.
+    - `invoice`: Serial. Unique id of each order. same order can have multiple products.
     - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of de customer are from the UK.
     - `quantity`: Quantitative. Number of items ordered for any given product of an invoice.
 
-Also, knowing the data types we can now he can start trying to ask some basic questions like:
+
+With this new information we can now start asking some questions tosee if we can get any context from all this data.
 
   - How many unique values?
-  -
+    - How many unique customers? (*note that maybe 1/4 of the total is not being considered because of the null values*)
+    - How many distinct products are being bought?
+    - Are the orders coming from how many countries?
+
+  - What time window are we looking at?
+    - Are we looking for short-term daily, weekly basis?
+    - Or we want to see monthly, quarterly reports?
+
+  - Are there any relevant outliers?
+    - What is the range of prices?
+    - How many products per invoice?
+    - How many customers per country?
 
   - How many different customers have bought a product from the company?
   - Which day had the most transactions happening?
