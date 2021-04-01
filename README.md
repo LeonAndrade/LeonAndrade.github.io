@@ -75,7 +75,7 @@ country    |0
 It seems that about a 1/4 of the values are missing from our `customer_id` column.
 
 
-Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify an unique customer.
+Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify an unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify an unique customer.
 <br/><br/>
 
 
@@ -122,7 +122,7 @@ From a quick look at this we can say that this data is about orders made by cust
 ## Understanding the Context
 
 Now that we know more about what data and how much of it we have, it's time to ask some more questions and try to get a sense of the context.
-We want to use our data to awnser some basic **_who_**, **_when_**, **_where_** and **_what_** questions.
+We want to use our data to answer some basic **_who_**, **_when_**, **_where_**, **_what_** and **_how many/much_** questions.
 
   - How many unique values?
     - How many unique customers? (*note that maybe 1/4 of the total is not being considered because of the null values*)
