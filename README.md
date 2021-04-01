@@ -6,7 +6,7 @@ This document describes my process for the Exploratory Data Analysis (EDA) of th
 
 `TLDR`: The present document contains a more throughout description of the process, queries and reasoning i use as starting point for most analysis.
 
-If you are a visual learner or not so much into the "*techies*" of data, there is a dashboard with filters for you to play around and come up with some new insights!<br/>
+If you are a visual learner or not so much into the "*tech-side*" of data, there is a dashboard with filters for you to play around and come up with some new insights!<br/>
 
 You can access the dashboard here: [Online Retail - Dashboard](https://dash-analytics-test.herokuapp.com/dashboard/1?quarter_and_year=Q1-2010)
 
@@ -165,7 +165,7 @@ quantity   |1057
 country    |43
 
 <br/><br/>
-This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from *43 countries* who bought something between **5698** (description) and **5305** (stockcode) **unique products**
+This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought something between **5698** (description) and **5305** (stockcode) **unique products**
 <br/><br/>
 
 #### How many different customers have bought a product from the company?
