@@ -27,7 +27,7 @@ SELECT
         FROM information_schema.columns
         WHERE table_name = 'online_retail'
 
-    ) as Columns
+    ) as columns
 ```
 
 table        |rows     |columns
@@ -35,7 +35,7 @@ table        |rows     |columns
 online_retail|1,067,371|8
 
 <br/><br/>
-This dataset has **8 columns** and around **1 million rows**. Let's see what else we can find about this dataset...
+The dataset has **8 columns** and around **1 million rows**. Let's see what else we can find...
 <br/><br/>
 
 #### Are there any null/missing values?
@@ -75,7 +75,7 @@ country    |0
 It seems that about a 1/4 of the values are missing from our `customer_id` column.
 
 
-Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify an unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify an unique customer.
+Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify an unique customer, we still have plenty to work with and to maybe make some assumptions about why is this data missing or what other ways we can identify a customer.
 <br/><br/>
 
 
@@ -103,16 +103,16 @@ country	   |character varying
 </br></br>
 From a quick look at this we can say that this data is about orders made by customers.
 
-  - Products:
+  - **Products**:
     - `stockcode`: Categorical / Serial. It seems to be the unique ID of a product.
     - `price`: Quantitative. Assuming its the price for that row's `quantity` value.
     - `description`: Categorical. Description of the product.
 
-  - Customers:
+  - **Customers**:
     - `customer_id`: Serial. Unique ID of a customer.
     - `country`: Categorical. Assuming it's the country of origin for an invoice/customer.
 
-  - Orders:
+  - **Orders**:
     - `invoice`: Serial. Unique ID of each order. A single order can have multiple products.
     - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of the customers are from the UK.
     - `quantity`: Quantitative. Number of items ordered for any given product on an invoice.
