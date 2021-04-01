@@ -176,7 +176,7 @@ SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FRO
 `5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 <br/><br/>
 
-### 2. Which day had the most transactions happening?
+#### Which day had the most transactions happening?
 
 ```sql
 select
@@ -191,9 +191,10 @@ limit 1
 day        |transaction_count
 :---------:|:---------------:
 2010-12-06|1350
+
 <br/><br/>
 
-#### 3. What is the average value of a transaction?
+#### What is the average value of a transaction?
 
 <br/><br/>
 
@@ -210,18 +211,18 @@ group by 1, 2
 order by 3 desc
 limit 10
 ```
-stockcode|description|invoice_count
-  :---:  |   :---:   |    :---:
-85123A|WHITE HANGING HEART T-LIGHT HOLDER|5817
-22423|REGENCY CAKESTAND 3 TIER|4412
-85099B|JUMBO BAG RED RETROSPOT|3444
-84879|ASSORTED COLOUR BIRD ORNAMENT|2958
-47566|PARTY BUNTING|2765
-21232|STRAWBERRY CERAMIC TRINKET BOX|2613
-20727|LUNCH BAG  BLACK SKULL.|2529
-21931|JUMBO STORAGE BAG SUKI|2434
-22469|HEART OF WICKER SMALL|2319
-22411|JUMBO SHOPPER VINTAGE RED PAISLEY|2297
+stockcode|description                       |invoice_count
+:-------:|:--------------------------------:|:-----------:
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817
+22423    |REGENCY CAKESTAND 3 TIER          |4412
+85099B   |JUMBO BAG RED RETROSPOT           |3444
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2958
+47566    |PARTY BUNTING                     |2765
+21232    |STRAWBERRY CERAMIC TRINKET BOX    |2613
+20727    |LUNCH BAG  BLACK SKULL.           |2529
+21931    |JUMBO STORAGE BAG SUKI            |2434
+22469    |HEART OF WICKER SMALL             |2319
+22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2297
 
 <br/><br/>
 
@@ -252,6 +253,3 @@ This can mean that we have products with same code but variations, or that some 
 - Which products are most popular?
 
 </br></br>
-
-## Dashboard
-Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance.
