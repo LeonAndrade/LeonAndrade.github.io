@@ -207,7 +207,7 @@ customer_id|5942
 
  _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 
-We can take this one step further and get this count for the 5 coutries with most customers
+We can take this one step further by get this count for the 5 coutries with most customers
 
 ```sql
 SELECT
@@ -226,6 +226,8 @@ France        |95
 Spain         |41
 Belgium       |29
 
+Most of the customers are from UK followed by a few neighbouring country, this might suggest that this data is from an English online retailer that sells mostly inside Europe.
+
 <br/><br/>
 
 #### Which day had the most transactions happening?
@@ -242,6 +244,52 @@ LIMIT 1
 day        |transaction_count
 :---------:|:---------------:
 2010-12-06|1350
+
+The day with most transactions is december 6th of the year 2010. Let's se the top 10, it's the same query we just have to increase the limit of returning rows.
+
+```sql
+...
+LIMIT 10
+```
+day        |transaction_count
+:---------:|:---------------:
+2010-12-06|1350
+2010-12-09|1304
+2010-12-07|1202
+2010-12-06|1194
+2010-12-03|1186
+2010-12-01|1184
+2010-12-08|1182
+2010-12-06|1136
+2011-10-31|1114
+2010-12-07|1072
+
+It seems december 2010 was a great month, with 9 out of the 10 days with most transactions!
+Just for a sanity check, let's see if this is just a daily trend by taking the top transaction count on a weekly basis:
+
+```sql
+SELECT
+    CAST(date_trunc('week', invoicedate) AS DATE) AS week,
+    COUNT(invoice) AS transaction_count
+FROM online_retail
+GROUP BY week
+ORDER BY transaction_count DESC
+LIMIT 10
+```
+day        |transaction_count
+:---------:|:---------------:
+2010-12-06 |28967
+2010-11-29 |26655
+2011-11-14 |21112
+2011-11-21 |19950
+2011-11-07 |19267
+2010-11-22 |19111
+2011-11-28 |18916
+2010-11-15 |18763
+2010-11-08 |18476
+2011-12-05 |17707
+
+It seems even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this wee can see that most sales occur by the end of the year, likely because of the hollidays.
 
 <br/><br/>
 
