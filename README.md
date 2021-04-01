@@ -13,6 +13,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 ## Understanding the data:
 
+<br/><br/>
 
 ##### * What are the dimensions of the dataset?
 ```sql
