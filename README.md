@@ -68,8 +68,8 @@ table        |rows     |columns
 :-----------:|:-------:|:-----:
 online_retail|1,067,371|8
 
-<br/><br/>
 The dataset has **8 columns** and around **1 million rows**. Let's see what else we can find...
+
 <br/><br/>
 
 #### Are there any null/missing values?
@@ -104,15 +104,11 @@ price      |0
 quantity   |0
 country    |0
 
-
-<br/><br/>
-It seems that about a 1/4 of the values are missing from our `customer_id` column.
-
+About a 1/4 of the values are missing from our `customer_id` column.
 
 Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify an unique customer, we still have plenty to work with and to maybe make some assumptions about why is this data missing or what other ways we can identify a customer.
+
 <br/><br/>
-
-
 
 #### What are the attributes (columns) and which data types they hold?
 ```sql
@@ -134,7 +130,6 @@ price      |double precision
 customer_id|double precision
 country	   |character varying
 
-</br></br>
 From a quick look at this we can say that this data is about orders made by customers.
 
   - Products:
@@ -157,6 +152,7 @@ From a quick look at this we can say that this data is about orders made by cust
 
 Now that we know more about what data and how much of it we have, it's time to ask some more questions to get a sense of context.
 We want to use our data to answer some basic **_who_**, **_when_**, **_where_**, **_what_** and **_how many/much_** questions.
+
 <br/><br/>
 
 #### How many unique values?
@@ -190,8 +186,8 @@ price      |2807
 quantity   |1057
 country    |43
 
-<br/><br/>
-This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought something between **5698** (description) and **5305** (stockcode) **unique products**
+This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought something between **5698** (description) and **5305** (stockcode) **unique products**\
+
 <br/><br/>
 
 #### How many different customers have bought a product from the company?
@@ -245,7 +241,8 @@ day        |transaction_count
 :---------:|:---------------:
 2010-12-06|1350
 
-The day with most transactions is december 6th of the year 2010. Let's se the top 10, it's the same query we just have to increase the limit of returning rows.
+The day with most transactions is the 6th of december of the year 2010.<br/>
+Let's se the top 10, it's the same query so we just have to increase the limit of returning rows.
 
 ```sql
 ...
