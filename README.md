@@ -10,7 +10,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 **Dashboard**: Metabase on Heroku
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
-<br/><br/>
+<br/>
 
 ## Understanding the Data
 ##### What are the dimensions of the dataset?
