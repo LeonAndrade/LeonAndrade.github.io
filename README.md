@@ -1,6 +1,7 @@
 # Analytics Test - Online Retail
 
 #### [Overview](#verview)
+  - [Technologies used to deploy and share the analysis](technologies-used-to-deploy-and-share-the-analysis)
 #### [Understanding the Data](#understanding-the-data)
   - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset)
   - [Are there any missing values?](#are-there-any-nullmissing-values)
