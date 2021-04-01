@@ -34,8 +34,8 @@ table|rows|columns
 online_retail|1,067,371|8
 
 <br/><br/>
-Our dataset has **8 columns** and around **1 million rows**.<br/>
-But that information alone is not enough since it doesn't tell us *what* is the data about.
+Now we know that our dataset has **8 columns** and around **1 million rows**.<br/>
+But that information alone is not enough since it doesn't tell us __what__ is the data about.
 So let's see what else we can find about this dataset.
 <br/><br/>
 
