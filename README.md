@@ -72,9 +72,7 @@ Also, knowing the data types we can now he can start trying to ask some basic qu
   - Which day had the most transactions happening?
   - What is the average value of a transaction?
   - Which products are most popular?
-
 </br></br>
-
 
 ##### Are there any null values?
 ```sql
@@ -90,27 +88,6 @@ SELECT
 FROM online_retail
 ```
 
-
-
-
-
-
-
-## Now that we know what we are looking at, we can start to ask a few questions:
-
-**1. How many different customers have bought a product from the company?**
-
-
-
-**2. Which day had the most transactions happening?**
-
-
-
-**3. What is the average value of a transaction?**
-
-
-
-**4. Which products are most popular?**
 
 
 
