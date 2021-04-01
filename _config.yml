@@ -1,1 +1,5 @@
+name: Leon's Application
+description: Analytics Test for Data Analyst position
 theme: jekyll-theme-cayman
+markdown: GFM
+url: "http://leonandrade.github.io"
