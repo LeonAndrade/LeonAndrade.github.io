@@ -53,7 +53,7 @@ order by transaction_count desc
 limit 10
 ```
 day|transaction_count
----|-----------------
+
 2010-12-06 00:00:00|1350
 2010-12-09 00:00:00|1304
 2010-12-07 00:00:00|1202
