@@ -160,87 +160,44 @@ country    |43
 
 #### How many different customers have bought a product from the company?
 ```sql
-select count(distinct customer_id) as unique_values
-from online_retail
+SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
 ```
 `5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 <br/><br/>
 
 
 #### How many distinct products are being bought?
-
+```sql
+SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
+UNION
+SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
+```
 There are `5698` distinct `description` but only `5305` distinct `stockcode`.
 This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced.
+<br/><br/>
 
-  - Are the orders coming from how many countries?
-
-- What time window are we looking at?
-- Are we looking for short-term daily, weekly basis?
-- Or we want to see monthly, quarterly reports?
-
-- Are there any relevant outliers?
-- What is the range of prices?
-- How many products per invoice?
-- How many customers per country?
-
-- How many different customers have bought a product from the company?
-- Which day had the most transactions happening?
-- What is the average value of a transaction?
-- Which products are most popular?
-
-</br></br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-```sql
-select count(distinct customer_id) from online_retail
-```
-```
-5942
-```
-
-#### 2. Which day had the most transactions happening?
+### 2. Which day had the most transactions happening?
 
 ```sql
 select
-    date_trunc('d', cast(invoicedate as timestamp)) as day,
+    cast(invoicedate as date) as day,
     count(invoice) as transaction_count
 from online_retail
 group by invoicedate
 order by transaction_count desc
-limit 10
+limit 1
 
-<center>
 ```
-day|transaction_count
-:---:|      :---:
-2010-12-06 00:00:00|1350
-2010-12-09 00:00:00|1304
-2010-12-07 00:00:00|1202
-2010-12-06 00:00:00|1194
-2010-12-03 00:00:00|1186
-2010-12-01 00:00:00|1184
-2010-12-08 00:00:00|1182
-2010-12-06 00:00:00|1136
-2011-10-31 00:00:00|1114
-2010-12-07 00:00:00|1072
-</center>
+day        |transaction_count
+:---------:|:---------------:
+2010-12-06|1350
+<br/><br/>
 
 #### 3. What is the average value of a transaction?
 
+<br/><br/>
 
 #### 4. Which products are most popular?
-
 ```sql
 select
 	stockcode,
@@ -265,6 +222,26 @@ stockcode|description|invoice_count
 21931|JUMBO STORAGE BAG SUKI|2434
 22469|HEART OF WICKER SMALL|2319
 22411|JUMBO SHOPPER VINTAGE RED PAISLEY|2297
+
+<br/><br/>
+
+#### Are the orders coming from how many countries?
+
+- What time window are we looking at?
+- Are we looking for short-term daily, weekly basis?
+- Or we want to see monthly, quarterly reports?
+
+- Are there any relevant outliers?
+- What is the range of prices?
+- How many products per invoice?
+- How many customers per country?
+
+- How many different customers have bought a product from the company?
+- Which day had the most transactions happening?
+- What is the average value of a transaction?
+- Which products are most popular?
+
+</br></br>
 
 ## Dashboard
 Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance.
