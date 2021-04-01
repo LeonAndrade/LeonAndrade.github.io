@@ -32,13 +32,13 @@ If you are a visual learner or not so much into the "*tech-side*" of data, there
 You can access the dashboard here:
 **[Online Retail - Dashboard](http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4)**
 
-#### Technologies used to deploy and share the analysis
+##### Technologies used to deploy and share the analysis
 
-**Database**: AWS RDS Postgres instance
-> (for more information: https://aws.amazon.com/rds/postgresql/)
+- **Database**: AWS RDS Postgres instance
+  > (for more information: https://aws.amazon.com/rds/postgresql/)
 
-**Dashboard**: Metabase on Heroku
->(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
+- **Dashboard**: Metabase on Heroku
+  >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
 <br/>
 
