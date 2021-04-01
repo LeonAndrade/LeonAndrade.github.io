@@ -154,7 +154,6 @@ stockcode  |5305
 price      |2807
 quantity   |1057
 country    |43
-
 <br/><br/>
 
 **How many different customers have bought a product from the company?**
