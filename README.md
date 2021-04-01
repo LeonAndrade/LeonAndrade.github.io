@@ -1,8 +1,7 @@
 # Analytics Test - Online Retail
+### Overview
 
 This document describes the exploratory data analysis (EDA) for the online_reatail_II dataset.
-
-### Overview
 
 **Database**: AWS RDS Postgres instance
 > (for more information: https://aws.amazon.com/rds/postgresql/)
@@ -10,25 +9,11 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 **Dashboard**: Metabase on Heroku
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
-
-For it's simplicty i decided to uploade the data to an AWS RDS PostgreSQL instance, AWS offers a free tier that is suitable for simple projetcs and will be enough for the our needs.
-
-More information on how to setup the database can be found at AWS: https://aws.amazon.com/rds/postgresql/
-
-Once all is set we can create the database:
+### First things, first. Let's understand what data we have in hands.
 
 
 
 
-
-### Purpose:
-On a daily basis we have multiple different challenges and most of them includes understanding and bringing insights on how to improve and monitor a process with multiple backgrounds, for example, transactions, onboarding of clients, controls, etc....
-
-So the main purpose of this test is:
-
-  1. Understand how you approach a brand-new database with their particularities, and your line of thinking during the whole process.
-
-  2. Identify how you present your work for both technical and business teams.
 
 ## Questions:
 
