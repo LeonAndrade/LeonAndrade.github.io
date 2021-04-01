@@ -158,12 +158,16 @@ country    |43
 
 <br/><br/>
 
-#### How many different customers have bought a product from the company?**
-
+#### How many different customers have bought a product from the company?
+```sql
+select count(distinct customer_id) as unique_values
+from online_retail
+```
 `5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 <br/><br/>
 
-**How many distinct products are being bought?**
+
+#### How many distinct products are being bought?
 
 There are `5698` distinct `description` but only `5305` distinct `stockcode`.
 This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced.
