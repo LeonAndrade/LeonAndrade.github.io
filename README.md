@@ -190,7 +190,6 @@ from online_retail
 group by invoicedate
 order by transaction_count desc
 limit 1
-
 ```
 day        |transaction_count
 :---------:|:---------------:
@@ -202,7 +201,7 @@ day        |transaction_count
 
 <br/><br/>
 
-#### 4. Which products are most popular?
+#### Which products are most popular?
 ```sql
 select
 	stockcode,
@@ -230,30 +229,20 @@ stockcode|description                       |invoice_count
 
 <br/><br/>
 
-#### How many distinct products are being bought?
-```sql
-SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
-UNION
-SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
-```
-There are `5698` distinct `description` but only `5305` distinct `stockcode`.
-This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced or missing.
+#### What time window are we looking at?
+
 <br/><br/>
 
-#### Are the orders coming from how many countries?
+#### Are there any relevant outliers?
 
-- What time window are we looking at?
-- Are we looking for short-term daily, weekly basis?
-- Or we want to see monthly, quarterly reports?
+<br/><br/>
 
-- Are there any relevant outliers?
-- What is the range of prices?
-- How many products per invoice?
-- How many customers per country?
+#### What is the range of prices?
 
-- How many different customers have bought a product from the company?
-- Which day had the most transactions happening?
-- What is the average value of a transaction?
-- Which products are most popular?
+<br/><br/>
 
-</br></br>
+#### How many products per invoice?
+
+<br/><br/>
+
+#### How many customers per country?
