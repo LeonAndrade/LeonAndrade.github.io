@@ -117,6 +117,7 @@ From a quick look at this we can say that this data is about orders made by cust
     - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of the customers are from the UK.
     - `quantity`: Quantitative. Number of items ordered for any given product on an invoice.
 
+<br/><br/>
 
 ## Understanding the Context
 
