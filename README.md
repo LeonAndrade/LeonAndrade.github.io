@@ -1,14 +1,12 @@
 # Analytics Test - Online Retail
 
----
+This document describes the exploratory data analysis (EDA) for the online_reatail_II dataset.
 
-## Introduction
+## Database
 
+For it's simplicty i uploaded the data to an AWS RDS PostgreSQL instance, AWS offers a free tier that is suitable for simple projetcs and will be enough for the our needs.
 
-
-
-
-
+More information on how to setup the database can be found at AWS: https://aws.amazon.com/rds/postgresql/
 
 
 
