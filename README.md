@@ -178,7 +178,6 @@ column_name|unique_values
 customer_id|5942
 
  _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
-
 <br/><br/>
 
 #### Which day had the most transactions happening?
