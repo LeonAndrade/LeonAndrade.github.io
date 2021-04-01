@@ -157,23 +157,14 @@ quantity   |1057
 country    |43
 
 <br/><br/>
+This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from *43 countries* who bought something between **5698** (description) and **5305** (stockcode) **unique products**
+<br/><br/>
 
 #### How many different customers have bought a product from the company?
 ```sql
 SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
 ```
 `5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
-<br/><br/>
-
-
-#### How many distinct products are being bought?
-```sql
-SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
-UNION
-SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
-```
-There are `5698` distinct `description` but only `5305` distinct `stockcode`.
-This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced.
 <br/><br/>
 
 ### 2. Which day had the most transactions happening?
@@ -223,6 +214,16 @@ stockcode|description|invoice_count
 22469|HEART OF WICKER SMALL|2319
 22411|JUMBO SHOPPER VINTAGE RED PAISLEY|2297
 
+<br/><br/>
+
+#### How many distinct products are being bought?
+```sql
+SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
+UNION
+SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
+```
+There are `5698` distinct `description` but only `5305` distinct `stockcode`.
+This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced or missing.
 <br/><br/>
 
 #### Are the orders coming from how many countries?
