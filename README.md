@@ -19,6 +19,8 @@
 
 #### [Dashboard Queries]()
 
+<br/><br/>
+
 ## Overview
 
 This document describes my process for the Exploratory Data Analysis (EDA) of the `online_retail_II` dataset.
