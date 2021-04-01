@@ -1,5 +1,6 @@
 # Analytics Test - Online Retail
 Applicant: Leon Andrade
+
 ---
 
 ## Introduction
