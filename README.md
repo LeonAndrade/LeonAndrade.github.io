@@ -51,6 +51,8 @@ from online_retail
 group by invoicedate
 order by transaction_count desc
 limit 10
+
+<center>
 ```
 day|transaction_count
 :---:|      :---:
@@ -64,6 +66,7 @@ day|transaction_count
 2010-12-06 00:00:00|1136
 2011-10-31 00:00:00|1114
 2010-12-07 00:00:00|1072
+</center>
 
 #### 3. What is the average value of a transaction?
 
