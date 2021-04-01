@@ -50,22 +50,22 @@ The dataset has **8 columns** and around **1 million rows**. Let's see what else
 #### Are there any null/missing values?
 ```sql
 SELECT
-SELECT 'invoice'     as column_name, sum(case when invoice     is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'invoice'     AS column_name, SUM(case when invoice     is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'stockcode'   as column_name, sum(case when stockcode   is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'stockcode'   AS column_name, SUM(case when stockcode   is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-select 'description' as column_name, sum(case when description is null then 1 else 0 end) as null_values FROM online_retail
+select 'description' AS column_name, SUM(case when description is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'quantity'    as column_name, sum(case when quantity    is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'quantity'    AS column_name, SUM(case when quantity    is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'invoicedate' as column_name, sum(case when invoicedate is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'invoicedate' AS column_name, SUM(case when invoicedate is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'price'       as column_name, sum(case when price       is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'price'       AS column_name, SUM(case when price       is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'customer_id' as column_name, sum(case when customer_id is null then 1 else 0 end) as null_values FROM online_retail
+SELECT 'customer_id' AS column_name, SUM(case when customer_id is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
-SELECT 'country'     as column_name, sum(case when country     is null then 1 else 0 end) as null_values FROM online_retail
-order by null_values desc
+SELECT 'country'     AS column_name, SUM(case when country     is NULL then 1 else 0 end) AS null_values FROM online_retail
+ORDER BY null_values DESC
 FROM online_retail
 ```
 column_name|null_values
@@ -136,21 +136,21 @@ We want to use our data to answer some basic **_who_**, **_when_**, **_where_**,
 
 #### How many unique values?
 ```sql
-SELECT 'invoice'     as column_name, count(distinct invoice)     as n_unique FROM online_retail
+SELECT 'invoice'     AS column_name, COUNT(DISTINCT invoice)     AS n_unique FROM online_retail
 UNION
-SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
+SELECT 'stockcode'   AS column_name, COUNT(DISTINCT stockcode)   AS n_unique FROM online_retail
 UNION
-SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
+SELECT 'description' AS column_name, COUNT(DISTINCT description) AS n_unique FROM online_retail
 UNION
-SELECT 'quantity'    as column_name, count(distinct quantity)    as n_unique FROM online_retail
+SELECT 'quantity'    AS column_name, COUNT(DISTINCT quantity)    AS n_unique FROM online_retail
 UNION
-SELECT 'invoicedate' as column_name, count(distinct invoicedate) as n_unique FROM online_retail
+SELECT 'invoicedate' AS column_name, COUNT(DISTINCT invoicedate) AS n_unique FROM online_retail
 UNION
-SELECT 'price'       as column_name, count(distinct price)       as n_unique FROM online_retail
+SELECT 'price'       AS column_name, COUNT(DISTINCT price)       AS n_unique FROM online_retail
 UNION
-SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
+SELECT 'customer_id' AS column_name, COUNT(DISTINCT customer_id) AS n_unique FROM online_retail
 UNION
-SELECT 'country'     as column_name, count(distinct country)     as n_unique FROM online_retail
+SELECT 'country'     AS column_name, COUNT(DISTINCT country)     AS n_unique FROM online_retail
 ORDER BY n_unique DESC
 
 ```
@@ -171,7 +171,10 @@ This dataset contains data from **53,628 invoices**, made by approximately **594
 
 #### How many different customers have bought a product from the company?
 ```sql
-SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
+SELECT
+    'customer_id' AS column_name,
+    COUNT(DISTINCT customer_id) AS n_unique
+FROM online_retail
 ```
 column_name|unique_values
 :---------:|:-----------:
@@ -183,13 +186,13 @@ customer_id|5942
 #### Which day had the most transactions happening?
 
 ```sql
-select
-    cast(invoicedate as date) as day,
-    count(invoice) as transaction_count
-from online_retail
-group by invoicedate
-order by transaction_count desc
-limit 1
+SELECT
+    CAST(invoicedate AS DATE) AS day,
+    COUNT(invoice) AS transaction_count
+FROM online_retail
+GROUP BY invoicedate
+ORDER BY transaction_count DESC
+LIMIT 1
 ```
 day        |transaction_count
 :---------:|:---------------:
@@ -203,16 +206,14 @@ day        |transaction_count
 
 #### Which products are most popular?
 ```sql
-select
-	stockcode,
-	description,
-	count(invoice) as invoice_count
-
-from online_retail
-
-group by 1, 2
-order by 3 desc
-limit 10
+SELECT
+    stockcode,
+    description,
+    COUNT(invoice) AS invoice_count
+FROM online_retail
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 10
 ```
 stockcode|description                       |invoice_count
 :-------:|:--------------------------------:|:-----------:
