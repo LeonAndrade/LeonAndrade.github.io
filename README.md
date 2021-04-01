@@ -11,7 +11,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
 
-## Understanding the data:
+## Understanding the Data
 ##### What are the dimensions of the dataset?
 ```sql
 SELECT
@@ -34,7 +34,7 @@ table|rows|columns
 online_retail|1,067,371|8
 
 <br/><br/>
-We now know that our data has 8 columns and around 1 million rows.
+Our dataset has **8 columns** and around **1 million rows**.<br/>
 But that information alone is not enough since it doesn't tell us *what* is the data about.
 So let's see what else we can find about this dataset.
 <br/><br/>
