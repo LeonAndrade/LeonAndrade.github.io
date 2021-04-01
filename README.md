@@ -1,4 +1,5 @@
 # Analytics Test - Online Retail
+
 ## Overview
 
 This document describes the exploratory data analysis (EDA) for the online_reatail_II dataset.
@@ -9,7 +10,51 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 **Dashboard**: Metabase on Heroku
 >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
-## First things, first. Let's understand what data we have in hands.
+
+## Understanding the data:
+
+- What are the dimensions of the dataset?
+
+```sql
+SELECT
+    'online_retail' AS table,
+    (
+        SELECT COUNT(*)
+        FROM online_retail
+
+    ) as rows,
+    (
+        SELECT COUNT(*)
+        FROM information_schema.columns
+        WHERE table_name = 'online_retail'
+
+    ) as Columns
+```
+
+table|rows|columns
+:---:|:--:|:-----:
+online_retail|1,067,371|8
+
+
+
+
+
+
+```sql
+SELECT
+    sum(case when invoice     is null then 1 else 0 end) as invoice_null,
+    sum(case when stockcode   is null then 1 else 0 end) as stockcode_null,
+    sum(case when description is null then 1 else 0 end) as description_null,
+    sum(case when quantity    is null then 1 else 0 end) as quantity_null,
+    sum(case when invoicedate is null then 1 else 0 end) as invoicedate_null,
+    sum(case when price       is null then 1 else 0 end) as price_null,
+    sum(case when customer_id is null then 1 else 0 end) as customer_id_null,
+    sum(case when country     is null then 1 else 0 end) as country_null
+FROM online_retail
+```
+
+
+
 
 
 
