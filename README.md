@@ -35,11 +35,11 @@ You can access the dashboard here:
 
 ##### Technologies used to deploy and share the analysis
 
-- **Database**: AWS RDS Postgres instance
-  > (for more information: https://aws.amazon.com/rds/postgresql/)
-
-- **Dashboard**: Metabase on Heroku
-  >(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
+> **Database**: AWS RDS Postgres instance
+> (for more information: https://aws.amazon.com/rds/postgresql/)
+>
+> **Dashboard**: Metabase on Heroku
+> (for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
 <br/>
 
