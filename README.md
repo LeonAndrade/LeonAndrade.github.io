@@ -37,10 +37,11 @@ You can access the dashboard here:
 
 ##### Database
 -  AWS RDS Postgres instance<br/>
-(for more information: https://aws.amazon.com/rds/postgresql/)
+> (for more information: https://aws.amazon.com/rds/postgresql/)
 
-##### Dashboard**: Metabase on Heroku<br/>
-(for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
+##### Dashboard:
+- Metabase on Heroku<br/>
+> (for more information: https://www.metabase.com/docs/latest/operations-guide/running-metabase-on-heroku.html)
 
 <br/>
 
