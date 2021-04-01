@@ -34,8 +34,9 @@ table        |rows     |columns
 :-----------:|:-------:|:-----:
 online_retail|1,067,371|8
 
+
 <br/>
-This dataset has **8 columns** and around **1 million rows**. Let's see what else we can find...
+This dataset has **8 columns** and around **1 million rows**. Let's see what else we can find about this dataset...
 <br/><br/>
 
 #### Are there any null/missing values?
