@@ -13,7 +13,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 ## Understanding the data:
 
-##### :dvd: What are the dimensions of the dataset?
+##### :minidisk: What are the dimensions of the dataset?
 ```sql
 SELECT
     'online_retail' AS table,
@@ -40,7 +40,7 @@ But that information alone is not enough, let's see what else can help us unders
 what our data contains.
 <br/><br/>
 
-##### :dvd: What attributes we have and which data types they hold?
+##### :minidisk: What attributes we have and which data types they hold?
 ```sql
 SELECT
     column_name,
@@ -61,7 +61,7 @@ customer_id|double precision
 country	character|varying
 
 
-##### :dvd: Are there any null values?
+##### :minidisk: Are there any null values?
 ```sql
 SELECT
     sum(case when invoice     is null then 1 else 0 end) as invoice_null,
