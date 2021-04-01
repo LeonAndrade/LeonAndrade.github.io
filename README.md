@@ -173,7 +173,12 @@ This dataset contains data from **53,628 invoices**, made by approximately **594
 ```sql
 SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
 ```
-`5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
+column_name|unique_values
+:---------:|:-----------:
+customer_id|5942
+
+ _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
+
 <br/><br/>
 
 #### Which day had the most transactions happening?
