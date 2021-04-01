@@ -1,11 +1,11 @@
 # Analytics Test - Online Retail
 
-##### [Overview](#verview)
-##### [Understanding the Data](#understanding-the-data)
+#### [Overview](#verview)
+#### [Understanding the Data](#understanding-the-data)
   - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset)
   - [Are there any missing values?](#are-there-any-nullmissing-values)
-  - [What attributes and data types it contain?](#what-are-the-attributes-columns-and-which-data-types-they-hold)
-##### [Understanding the Context](#understanding-the-context)**
+  - [What attributes and data types it contains?](#what-are-the-attributes-columns-and-which-data-types-they-hold)
+#### [Understanding the Context](#understanding-the-context)
   - [How many unique values?](how-many-unique-values)
   - [What time window are we looking at?](what-time-window-are-we-looking-at)
   - [How many different customers have bought a product from the company?](how-many-different-customers-have-bought-a-product-from-the-company)
@@ -17,7 +17,7 @@
   - [How many products per invoice?](how-many-products-per-invoice)
   - [How many customers per country?](how-many-customers-per-country)
 
-##### [Dashboard Queries]()
+#### [Dashboard Queries]()
 
 ## Overview
 
