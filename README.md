@@ -82,7 +82,6 @@ order by 3 desc
 limit 10
 ```
 stockcode|description|invoice_count
-  :---:  |   :---:   |    :---:
 85123A|WHITE HANGING HEART T-LIGHT HOLDER|5817
 22423|REGENCY CAKESTAND 3 TIER|4412
 85099B|JUMBO BAG RED RETROSPOT|3444
