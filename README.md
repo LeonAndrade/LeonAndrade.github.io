@@ -35,11 +35,11 @@ table|rows|columns
 :---:|:--:|:-----:
 online_retail|1,067,371|8
 
-<p>
+
 We now know that our data contains 8 columns and around 1 million rows.
 But that information alone is not enough, let's see what else can help us understand
 what our data contains.
-</p>
+
 
 - List table columns and data types:
 ```sql
