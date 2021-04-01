@@ -53,6 +53,7 @@ order by transaction_count desc
 limit 10
 ```
 day|transaction_count
+---|-----------------
 2010-12-06 00:00:00|1350
 2010-12-09 00:00:00|1304
 2010-12-07 00:00:00|1202
@@ -82,6 +83,7 @@ order by 3 desc
 limit 10
 ```
 stockcode|description|invoice_count
+  :---:  |   :---:   |    :---:
 85123A|WHITE HANGING HEART T-LIGHT HOLDER|5817
 22423|REGENCY CAKESTAND 3 TIER|4412
 85099B|JUMBO BAG RED RETROSPOT|3444
