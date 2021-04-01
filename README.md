@@ -164,6 +164,7 @@ country    |43
   > This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced.
 
 
+
   - Are the orders coming from how many countries?
 
 - What time window are we looking at?
