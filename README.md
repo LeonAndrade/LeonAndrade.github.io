@@ -14,7 +14,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 ## Understanding the data:
 
 
-- What are the dimensions of the dataset?
+##### What are the dimensions of the dataset?
 ```sql
 SELECT
     'online_retail' AS table,
@@ -41,7 +41,7 @@ But that information alone is not enough, let's see what else can help us unders
 what our data contains.
 
 
-- List table columns and data types:
+##### List table columns and data types:
 ```sql
 SELECT
     column_name,
@@ -62,7 +62,7 @@ customer_id|double precision
 country	character|varying
 
 
-- Are there any null values?
+###### Are there any null values?
 ```sql
 SELECT
     sum(case when invoice     is null then 1 else 0 end) as invoice_null,
