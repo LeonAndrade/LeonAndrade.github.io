@@ -108,7 +108,7 @@ From a quick look at this we can say that this data is about orders made by cust
 
   - Products:
     - `stockcode`: Categorical / Serial. It seems to be the unique id of a product.
-    - `price`: Quantitative. Assuming its the price for that row's quantity amount.
+    - `price`: Quantitative. Assuming its the price for that row's quantity value.
     - `description`: Categorical. Name of the product.
 
   - Customers:
