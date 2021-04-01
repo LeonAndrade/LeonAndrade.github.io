@@ -1,5 +1,12 @@
 # Analytics Test - Online Retail
 
+- [Overview](#verview)
+- [Understanding the Data](#understanding-the-data)
+  - [](#what-are-the-dimensions-of-the-dataset?)
+  - [](#are-there-any-null/missing-values)
+  - [](#what-are-the-attributes-(colums)-and-which-data-types-they-hold?)
+- [Understanding the Context](#understanding-the-context)
+
 ## Overview
 
 This document describes my process for the Exploratory Data Analysis (EDA) of the `online_retail_II` dataset.
