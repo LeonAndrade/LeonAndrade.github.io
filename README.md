@@ -104,21 +104,24 @@ country	   |character varying
 From a quick look at this we can say that this data is about orders made by customers.
 
   - Products:
-    - `stockcode`: Categorical / Serial. It seems to be the unique id of a product.
+    - `stockcode`: Categorical / Serial. It seems to be the unique ID of a product.
     - `price`: Quantitative. Assuming its the price for that row's `quantity` value.
     - `description`: Categorical. Description of the product.
 
   - Customers:
-    - `customer_id`: Serial. Unique id of a customer.
+    - `customer_id`: Serial. Unique ID of a customer.
     - `country`: Categorical. Assuming it's the country of origin for an invoice/customer.
 
   - Orders:
-    - `invoice`: Serial. Unique id of each order. same order can have multiple products.
-    - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of de customer are from the UK.
-    - `quantity`: Quantitative. Number of items ordered for any given product of an invoice.
+    - `invoice`: Serial. Unique ID of each order. A single order can have multiple products.
+    - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of the customers are from the UK.
+    - `quantity`: Quantitative. Number of items ordered for any given product on an invoice.
 
 
-With this new information we can now start asking some questions to get some context from all this data.
+## Understanding the Context
+
+Now that we know more about what data and how much of it we have, it's time to ask some more questions and try to get a sense of the context.
+We want to use our data to awnser some basic **_who_**, **_when_**, **_where_** and **_what_** questions.
 
   - How many unique values?
     - How many unique customers? (*note that maybe 1/4 of the total is not being considered because of the null values*)
