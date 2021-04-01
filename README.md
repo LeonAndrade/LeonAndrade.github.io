@@ -1,37 +1,105 @@
-## Welcome to GitHub Pages
+# Analytics Test - Full Risk Data Analyst
 
-You can use the [editor on GitHub](https://github.com/LeonAndrade/LeonAndrade.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This repository contains the source code for my solution to the test.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Stack of choice:
 
-### Markdown
+### Application Layer
+- Python 3.9.2
+    - Flask
+    - Pandas
+    - Dash
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Database
+- Postgresql 13.2
 
-```markdown
-Syntax highlighted code block
+### Deployment Environment
+- Heroku + Gunicorn wsgi
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
+## The Test
 
-1. Numbered
-2. List
+### Purpose:
+On a daily basis we have multiple different challenges and most of them includes understanding and bringing insights on how to improve and monitor a process with multiple backgrounds, for example, transactions, onboarding of clients, controls, etc....
 
-**Bold** and _Italic_ and `Code` text
+So the main purpose of this test is:
 
-[Link](url) and ![Image](src)
+  1. Understand how you approach a brand-new database with their particularities, and your line of thinking during the whole process.
+
+  2. Identify how you present your work for both technical and business teams.
+
+## Questions:
+
+#### 1. How many different customers have bought a product from the company?
+
+```sql
+select count(distinct customer_id) from online_retail
+```
+```
+5942
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### 2. Which day had the most transactions happening?
 
-### Jekyll Themes
+```sql
+select
+	date_trunc('d', cast(invoicedate as timestamp)) as day,
+	count(invoice) as transaction_count
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/LeonAndrade/LeonAndrade.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+from online_retail
 
-### Support or Contact
+group by invoicedate
+order by transaction_count desc
+limit 10
+```
+day|transaction_count
+ :---: |      :---:
+2010-12-06 00:00:00|1350
+2010-12-09 00:00:00|1304
+2010-12-07 00:00:00|1202
+2010-12-06 00:00:00|1194
+2010-12-03 00:00:00|1186
+2010-12-01 00:00:00|1184
+2010-12-08 00:00:00|1182
+2010-12-06 00:00:00|1136
+2011-10-31 00:00:00|1114
+2010-12-07 00:00:00|1072
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### 3. What is the average value of a transaction?
+
+
+#### 4. Which products are most popular?
+
+```sql
+select
+	stockcode,
+	description,
+	count(invoice) as invoice_count
+
+from online_retail
+
+group by 1, 2
+order by 3 desc
+limit 10
+```
+stockcode|description|invoice_count
+  :---:  |   :---:   |    :---:
+85123A|WHITE HANGING HEART T-LIGHT HOLDER|5817
+22423|REGENCY CAKESTAND 3 TIER|4412
+85099B|JUMBO BAG RED RETROSPOT|3444
+84879|ASSORTED COLOUR BIRD ORNAMENT|2958
+47566|PARTY BUNTING|2765
+21232|STRAWBERRY CERAMIC TRINKET BOX|2613
+20727|LUNCH BAG  BLACK SKULL.|2529
+21931|JUMBO STORAGE BAG SUKI|2434
+22469|HEART OF WICKER SMALL|2319
+22411|JUMBO SHOPPER VINTAGE RED PAISLEY|2297
+
+## Dashboard
+Develop a dashboard for a business user to have access to all data you find important for a daily monitoring of the company performance, feel free to go beyond the previous questions and bring more insights. You can use the BI tool of your preference to create the dashboard.
+
+## Observation
+We recommend that you upload the file into a database and use it to extract the information compiled when answering the questions and creating the dashboard, in the document include the queries you used to get to the answers.
+
+## Conclusion
+You will not have a chance to present this work personally so the document you send must be clear visually and demonstrate well how you developed your solution.
