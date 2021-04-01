@@ -155,11 +155,11 @@ price      |2807
 quantity   |1057
 country    |43
 
+<br/><br/>
+
 **How many different customers have bought a product from the company?**
 
-`5942`.
-
-_(*note that maybe 1/4 of the total is not being considered because of the null values*)_
+`5942`. _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
 <br/><br/>
 
 **How many distinct products are being bought?**
