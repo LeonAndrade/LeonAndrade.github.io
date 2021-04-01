@@ -124,24 +124,62 @@ From a quick look at this we can say that this data is about orders made by cust
 Now that we know more about what data and how much of it we have, it's time to ask some more questions and try to get a sense of the context.
 We want to use our data to answer some basic **_who_**, **_when_**, **_where_**, **_what_** and **_how many/much_** questions.
 
-  - How many unique values?
-    - How many unique customers? (*note that maybe 1/4 of the total is not being considered because of the null values*)
-    - How many distinct products are being bought?
-    - Are the orders coming from how many countries?
+- How many unique values?
+```sql
+SELECT 'invoice'     as column_name, count(distinct invoice)     as n_unique FROM online_retail
+UNION
+SELECT 'stockcode'   as column_name, count(distinct stockcode)   as n_unique FROM online_retail
+UNION
+SELECT 'description' as column_name, count(distinct description) as n_unique FROM online_retail
+UNION
+SELECT 'quantity'    as column_name, count(distinct quantity)    as n_unique FROM online_retail
+UNION
+SELECT 'invoicedate' as column_name, count(distinct invoicedate) as n_unique FROM online_retail
+UNION
+SELECT 'price'       as column_name, count(distinct price)       as n_unique FROM online_retail
+UNION
+SELECT 'customer_id' as column_name, count(distinct customer_id) as n_unique FROM online_retail
+UNION
+SELECT 'country'     as column_name, count(distinct country)     as n_unique FROM online_retail
+ORDER BY n_unique DESC
 
-  - What time window are we looking at?
-    - Are we looking for short-term daily, weekly basis?
-    - Or we want to see monthly, quarterly reports?
-
-  - Are there any relevant outliers?
-    - What is the range of prices?
-    - How many products per invoice?
-    - How many customers per country?
+```
+column_name|unique_values
+:---------:|:-----------:
+invoice    |53628
+invoicedate|47635
+customer_id|5942
+description|5698
+stockcode  |5305
+price      |2807
+quantity   |1057
+country    |43
 
   - How many different customers have bought a product from the company?
-  - Which day had the most transactions happening?
-  - What is the average value of a transaction?
-  - Which products are most popular?
+  > `5942`
+  > (*note that maybe 1/4 of the total is not being considered because of the null values*)
+
+
+  - How many distinct products are being bought?
+  > There are `5698` distinct `description` but only `5305` distinct `stockcode`.
+  > This can mean that we have products with same code but variations, or that some descriptions or stockcodes were misplaced.
+
+
+  - Are the orders coming from how many countries?
+
+- What time window are we looking at?
+- Are we looking for short-term daily, weekly basis?
+- Or we want to see monthly, quarterly reports?
+
+- Are there any relevant outliers?
+- What is the range of prices?
+- How many products per invoice?
+- How many customers per country?
+
+- How many different customers have bought a product from the company?
+- Which day had the most transactions happening?
+- What is the average value of a transaction?
+- Which products are most popular?
 
 </br></br>
 
