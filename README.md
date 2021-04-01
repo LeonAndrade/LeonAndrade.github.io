@@ -30,8 +30,8 @@ SELECT
     ) as Columns
 ```
 
-table|rows|columns
-:---:|:--:|:-----:
+table        |rows     |columns
+:-----------:|:-------:|:-----:
 online_retail|1,067,371|8
 
 <br/><br/>
@@ -66,19 +66,19 @@ column_name|null_values
 :---------:|:---------:
 customer_id|243007
 description|4382
-invoice|0
-stockcode|0
+invoice    |0
+stockcode  |0
 invoicedate|0
-price|0
-quantity|0
-country|0
+price      |0
+quantity   |0
+country    |0
 
 
 <br/><br/>
 It seems that about a 1/4 of the values are missing from our `customer_id` column.
 
 
-Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify a unique customer.
+Although that may be very relevant because it represents a large fraction of the data and it looks like the main way to identify a unique customer, we still have plenty to work with and maybe even ask some questions about why this data is missing or what other ways we can identify an unique customer.
 <br/><br/>
 
 
@@ -93,24 +93,37 @@ WHERE table_name = 'online_retail'
 ```
 
 column_name|data_type
-:----:|:------------------------------:
-invoice|Character varying
-stockcode|character varying
+:---------:|:--------------------------:
+invoice    |character varying
+stockcode  |character varying
 description|character varying
-quantity|bigint
+quantity   |bigint
 invoicedate|timestamp without time zone
-price|double precision
+price      |double precision
 customer_id|double precision
-country	character|varying
+country	   |character varying
 
 </br></br>
 From a quick look at this we can say that this data is about orders made by customers.
 
-  - products (`stockcode`, `price` and `description`),
-  - customers (`customer_id`, `country`), and
-  - orders (`invoice`, `invoicedate`, `quantity`).
+  - Products:
+    - `stockcode`: Categorical / Serial. It seems to be the unique id of a product.
+    - `price`: Quantitative. Assuming its the price for that row's quantity amount.
+    - `description`: Categorical. Name of the product.
+
+  - Customers:
+    - `customer_id`: Serial. unique id of a customer.
+    - `country`: Categorical. Assuming it's the country of origin for an invoice/customer.
+
+  - Orders:
+    - `invoice`: Serial. unique id of each order. same order can have multiple products.
+    - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of de customer are from the UK.
+    - `quantity`: Quantitative. Number of items ordered for any given product of an invoice.
 
 Also, knowing the data types we can now he can start trying to ask some basic questions like:
+
+  - How many unique values?
+  -
 
   - How many different customers have bought a product from the company?
   - Which day had the most transactions happening?
