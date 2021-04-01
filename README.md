@@ -12,8 +12,7 @@ This document describes the exploratory data analysis (EDA) for the online_reata
 
 
 ## Understanding the data:
-
-##### :mag: What are the dimensions of the dataset?
+##### What are the dimensions of the dataset?
 ```sql
 SELECT
     'online_retail' AS table,
@@ -35,12 +34,12 @@ table|rows|columns
 online_retail|1,067,371|8
 
 <br/><br/>
-We now know that our data contains 8 columns and around 1 million rows.
-But that information alone is not enough, let's see what else can help us understand
-what our data contains.
+We now know that our data has 8 columns and around 1 million rows.
+But that information alone is not enough since it doesn't tell us *what* is the data about.
+So let's see what else we can find about this dataset.
 <br/><br/>
 
-##### :mag: What attributes we have and which data types they hold?
+##### What attributes we have and which data types they hold?
 ```sql
 SELECT
     column_name,
@@ -60,8 +59,24 @@ price|double precision
 customer_id|double precision
 country	character|varying
 
+</br></br>
+From a quick look at this we can say that this data is about orders made by customers.
 
-##### :mag: Are there any null values?
+  - products (`stockcode`, `price` and `description`),
+  - customers (`customer_id`, `country`), and
+  - orders (`invoice`, `invoicedate`, `quantity`).
+
+Also, knowing the data types we can now he can start trying to ask some basic questions like:
+
+  - How many different customers have bought a product from the company?
+  - Which day had the most transactions happening?
+  - What is the average value of a transaction?
+  - Which products are most popular?
+
+</br></br>
+
+
+##### Are there any null values?
 ```sql
 SELECT
     sum(case when invoice     is null then 1 else 0 end) as invoice_null,
