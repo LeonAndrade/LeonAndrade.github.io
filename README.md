@@ -1,23 +1,17 @@
-# Analytics Test - Leon Andrade
+# Analytics Test - Online Retail
+Applicant: Leon Andrade
+---
 
-This repository contains the source code for my solution to the test.
-
-Stack of choice:
-
-### Application Layer
-- Python 3.9.2
-    - Flask
-    - Pandas
-    - Dash
-
-### Database
-- Postgresql 13.2
-
-### Deployment Environment
-- Heroku + Gunicorn wsgi
+## Introduction
 
 
-## The Test
+
+
+
+
+
+
+
 
 ### Purpose:
 On a daily basis we have multiple different challenges and most of them includes understanding and bringing insights on how to improve and monitor a process with multiple backgrounds, for example, transactions, onboarding of clients, controls, etc....
@@ -43,11 +37,9 @@ select count(distinct customer_id) from online_retail
 
 ```sql
 select
-	date_trunc('d', cast(invoicedate as timestamp)) as day,
-	count(invoice) as transaction_count
-
+    date_trunc('d', cast(invoicedate as timestamp)) as day,
+    count(invoice) as transaction_count
 from online_retail
-
 group by invoicedate
 order by transaction_count desc
 limit 10
