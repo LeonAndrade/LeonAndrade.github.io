@@ -6,7 +6,7 @@ This document describes my process for the Exploratory Data Analysis (EDA) of th
 
 `TLDR`: The present document contains a more throughout description of the process, queries and reasoning i use as starting point for most analysis.
 
-For **business users**, there is a dashboard with filters that allow for more intuitive acess to the data.
+For **business users**, there is a dashboard with filters that allow for more intuitive interaction with the data.
 it can be found here: [Online Retail - Dashboard](https://dash-analytics-test.herokuapp.com/dashboard/1?quarter_and_year=Q1-2010)
 
 #### Technologies used to deploy and share the analysis
