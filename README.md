@@ -327,7 +327,7 @@ WITH a AS (
 ), b as (
 
     SELECT
-	    *,
+        *,
         ntile(4) OVER (ORDER BY sum_price ASC) AS quartile
     FROM a
 )
