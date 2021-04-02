@@ -549,6 +549,7 @@ Data can tell us a lot, but data alone is note enought, Data Science/Analytics/E
 
 **Good data analytics should feel intuitive and simple, despite how technically challenging it can be to achieve such results.**
 
+<br/><br/>
 
 ## Dashboard Queries
 
