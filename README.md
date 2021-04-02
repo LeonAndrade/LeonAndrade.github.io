@@ -513,6 +513,7 @@ stockcode|description                       |invoice_count|quantity
 Who would guess heart hanging light holders would be so popular?!
 
 <img src='img/white-hanging-heart-t-light-holder.jpg' alt='White Hanging Light Holder' width=200 height=200>
+
 [Source](https://i.pinimg.com/originals/6f/a0/46/6fa04668fc88d6e40af7566694df0234.jpg)
 
 And even if we filter by unique customers these hanging lights still outperform the other products, being ordered by 1.4k unique customers in more than 20 countries!
