@@ -417,7 +417,7 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 
 #### Which products are most popular?
 
-What are we going to consider as popular?
+What are we going to consider as popular?<br/>
 We can see the top 10 products by number of distinct invoices, which product is being ordered more times?
 
 ```sql
@@ -443,7 +443,8 @@ stockcode|description                       |invoice_count
 22469    |HEART OF WICKER SMALL             |2319
 22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2297
 
-Another way to look at it, is to measure by total quantity sold. Which products are bought in the largest quantities?
+Another way to look at it, is to measure by total quantity sold.<br/>
+Which products are bought in the largest quantities?
 
 ```sql
 SELECT
