@@ -190,15 +190,25 @@ Let's now see what time window is covered by our data
 
 ```sql
     SELECT
-        CAST(DATE_TRUNC('mon', invoicedate)AS DATE) AS month,
-        COUNT(DISTINCT invoice)                     AS count_invoice,
-        SUM(price)                                  AS sum_price,
-        COUNT(DISTINCT customer_id)                 AS unique_customers,
-        SUM(quantity)                               AS sum_quantity
+        to_char(month, 'Mon/YYYY'),
+        count_invoice,
+        sum_price,
+        unique_customers,
+        sum_quantity
+    FROM (
 
-    FROM online_retail
-    GROUP BY month
-    ORDER BY month DESC
+        SELECT
+            DATE_TRUNC('mon', invoicedate) as month,
+            COUNT(distinct invoice) AS count_invoice,
+            sum(price) as sum_price,
+            count(distinct customer_id) as unique_customers,
+            sum(quantity) as sum_quantity
+
+        FROM online_retail
+        GROUP BY month
+        ORDER BY month DESC
+
+    ) AS A
 ```
 ![Monthly Summary](img/online_retail_monthly_summary.png)
 
@@ -382,7 +392,7 @@ StdDev        |532.73
 Max           |38970.00
 
 This tell us that while the average price is just over $100.00, 75% of the prices are under $83.00 .<br/>
-The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some outliers.
+The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
 
 > while SQL can do most of the work, the python library Pandas can do it with less typing:
 > ```python
