@@ -186,7 +186,45 @@ price      |2807
 quantity   |1057
 country    |43
 
-This dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought something between **5698** (description) and **5305** (stockcode) **unique products**\
+Let's now see what time window is covered by our data
+
+```sql
+    SELECT
+        DATE_TRUNC('mon', CAST(invoicedate AS timestamp)) AS month,
+        COUNT(distinct invoice) AS count_invoice
+    FROM online_retail
+    GROUP BY mon
+    ORDER BY mon DESC
+```
+month|count_invoice
+:--------:|:------:
+2011-12-01|1015
+2011-11-01|3462
+2011-10-01|2637
+2011-09-01|2327
+2011-08-01|1737
+2011-07-01|1927
+2011-06-01|2012
+2011-05-01|2162
+2011-04-01|1744
+2011-03-01|1983
+2011-02-01|1393
+2011-01-01|1476
+2010-12-01|2025
+2010-11-01|3669
+2010-10-01|2965
+2010-09-01|2375
+2010-08-01|1877
+2010-07-01|2017
+2010-06-01|2216
+2010-05-01|2418
+2010-04-01|1892
+2010-03-01|2367
+2010-02-01|1969
+2010-01-01|1633
+2009-12-01|2330
+
+Now we know that this dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought more than **5 thousand unique products** in a **two year window** from december 2009 to december 2011.
 
 <br/><br/>
 
@@ -230,16 +268,16 @@ Most of the customers are from UK followed by a few neighbouring country, this m
 
 ```sql
 SELECT
-    CAST(invoicedate AS DATE) AS day,
+	cast(date_trunc('d',invoicedate) AS DATE) AS day,
     COUNT(invoice) AS transaction_count
 FROM online_retail
-GROUP BY invoicedate
+GROUP BY day
 ORDER BY transaction_count DESC
 LIMIT 1
 ```
 day        |transaction_count
 :---------:|:---------------:
-2010-12-06|1350
+2010-12-06|7756
 
 The day with most transactions is the 6th of december of the year 2010.<br/>
 Let's se the top 10, it's the same query so we just have to increase the limit of returning rows.
@@ -250,18 +288,18 @@ LIMIT 10
 ```
 day        |transaction_count
 :---------:|:---------------:
-2010-12-06|1350
-2010-12-09|1304
-2010-12-07|1202
-2010-12-06|1194
-2010-12-03|1186
-2010-12-01|1184
-2010-12-08|1182
-2010-12-06|1136
-2011-10-31|1114
-2010-12-07|1072
+2010-12-06 |7756
+2010-12-01 |6216
+2010-12-07 |5926
+2010-12-09 |5782
+2010-12-05 |5450
+2011-12-05 |5331
+2010-12-08 |5294
+2011-12-08 |4940
+2010-12-03 |4404
+2011-11-29 |4313
 
-It seems december 2010 was a great month, with 9 out of the 10 days with most transactions!
+It seems december 2010 was a great month, with 7 out of the 10 days with most transactions!
 Just for a sanity check, let's see if this is just a daily trend by taking the top transaction count on a weekly basis:
 
 ```sql
@@ -286,7 +324,7 @@ day        |transaction_count
 2010-11-08 |18476
 2011-12-05 |17707
 
-It seems even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this wee can see that most sales occur by the end of the year, likely because of the hollidays.
+It seems even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this we can see that most sales occur by the end of the year, likely because of the hollidays.
 
 <br/><br/>
 
@@ -295,25 +333,25 @@ It seems even when grouping by weeks, december 2010 had a great week of sales. A
 By transactions we are assuming the sum of prices for a single invoice.
 _(obs: there are a few prices with negative value and a description os adjusted bad debit, so we are going to disconsider all negative prices)_
 ```sql
-with a as (
+WITH a AS (
 
-	select
-		invoice,
-		sum(price) as sum_price
-	from online_retail
-	where price > 0
-	group by 1
-	order by 2 desc
+    SELECT
+        invoice,
+        sum(price) AS sum_price
+    FROM online_retail
+    WHERE price > 0
+    GROUP BY 1
+    ORDER BY 2 DESC
 
 )
 
-select 'Min'    as measure, round(min(sum_price)::numeric,2)         as value from a
+SELECT 'Min'    AS measure, round(min(sum_price)::numeric,2)         AS value FROM a
 union
-select 'Avg'    as measure, round(avg(sum_price)::numeric,2)         as value from a
+SELECT 'Avg'    AS measure, round(avg(sum_price)::numeric,2)         AS value FROM a
 union
-select 'Max'    as measure, round(max(sum_price)::numeric,2)         as value from a
+SELECT 'Max'    AS measure, round(max(sum_price)::numeric,2)         AS value FROM a
 union
-select 'StdDev' as measure, round(stddev_samp(sum_price)::numeric,2) as value from a
+SELECT 'StdDev' AS measure, round(stddev_samp(sum_price)::numeric,2) AS value FROM a
 ```
 measure|value
 :-----:|:---:
@@ -321,6 +359,11 @@ Min    |0.01
 StdDev |532.73
 Max    |38970.00
 Avg    |105.88
+
+This tell us that while the average price is just over $100.00, the standard deviation is roughly 5 times that, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some outliers.
+
+Let's go beyond SQL and plot this with python to better visualize the distribution of prices.
+
 
 <br/><br/>
 
@@ -350,9 +393,6 @@ stockcode|description                       |invoice_count
 
 <br/><br/>
 
-#### What time window are we looking at?
-
-<br/><br/>
 
 #### Are there any relevant outliers?
 
