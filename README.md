@@ -418,6 +418,9 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 
 #### Which products are most popular?
 
+What are we going to consider as popular?
+We can see the top 10 products by number of distinct invoices, which product is being ordered more times?
+
 ```sql
 SELECT
     stockcode,
@@ -441,20 +444,74 @@ stockcode|description                       |invoice_count
 22469    |HEART OF WICKER SMALL             |2319
 22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2297
 
-<br/><br/>
+Another way to look at it, is to measure by total quantity sold. Which products are bought in the largest quantities?
 
+```sql
+SELECT
+    stockcode,
+    description,
+    sum(quantity) AS total_quantity
+FROM online_retail
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 10
+```
+stockcode|description                       |total_quantity
+:-------:|:--------------------------------:|:------------:
+84077    |WORLD WAR 2 GLIDERS ASSTD DESIGNS |108545
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|92453
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |81306
+85099B   |JUMBO BAG RED RETROSPOT           |77671
+17003    |BROCADE RING PURSE                |70700
+21977    |PACK OF 60 PINK PAISLEY CAKE CASES|56575
+84991    |60 TEATIME FAIRY CAKE CASES       |54366
+22197    |SMALL POPCORN HOLDER              |49616
+21212    |PACK OF 72 RETROSPOT CAKE CASES   |49344
+21212    |PACK OF 72 RETRO SPOT CAKE CASES  |46106
 
-#### Are there any relevant outliers?
+Which products show in both results?
 
-<br/><br/>
+```sql
+WITH a as (
 
-#### What is the range of prices?
+    SELECT
+        stockcode,
+        description,
+        COUNT(invoice) AS invoice_count
+    FROM online_retail
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    LIMIT 10
+
+), b as (
+
+    SELECT
+        stockcode,
+        description,
+        sum(quantity) AS quantity
+    FROM online_retail
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    LIMIT 10
+
+)
+
+SELECT
+	a.stockcode,
+	a.description,
+	a.invoice_count,
+	b.quantity
+FROM a INNER JOIN b ON a.stockcode = b.stockcode
+ORDER BY quantity DESC
+```
+stockcode|description                       |invoice_count|quantity
+:-------:|:--------------------------------:|:-----------:|:------:
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817         |92453
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2958         |81306
+85099B   |JUMBO BAG RED RETROSPOT           |3444         |77671
 
 <br/><br/>
 
 #### How many products per invoice?
 
-<br/><br/>
-
-#### How many customers per country?
 
