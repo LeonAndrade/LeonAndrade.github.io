@@ -351,23 +351,23 @@ select
     where quartile = 3
 union
 SELECT
-	'Min'                                       AS measure,
-	round(min(sum_price)::numeric,2)            AS value
+	'Min'                                      AS measure,
+	round(min(sum_price)::numeric,2)           AS value
 	FROM b
 union
 SELECT
-    'Avg'                                       AS measure,
-    round(avg(sum_price)::numeric,2)            AS value
+    'Avg'                                      AS measure,
+    round(avg(sum_price)::numeric,2)           AS value
 	FROM b
 union
 SELECT
-    'StdDev'                                    AS measure,
-    round(stddev_samp(sum_price)::numeric,2)    AS value
+    'StdDev'                                   AS measure,
+    round(stddev_samp(sum_price)::numeric,2)   AS value
 	FROM b
 union
 SELECT
-    'Max'                                       AS measure,
-    round(max(sum_price)::numeric,2)            AS value
+    'Max'                                      AS measure,
+    round(max(sum_price)::numeric,2)           AS value
 	FROM b
 order by value asc
 ```
