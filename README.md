@@ -408,7 +408,8 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 
 > while SQL can do most of the work, the python library Pandas can do it with less typing:
 > ```python
-> df = db.execute("""
+> import pandas as pd
+> sql = """
 >   SELECT
 >        distinct invoice,
 >        sum(price) as invoice_amount
@@ -417,8 +418,9 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 >    GROUP BY 1
 >    ORDER BY 2 asc
 >
-> """)
+> """
 >
+> df = pd.read_sql(sql, engine)
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
 > ```
@@ -467,3 +469,11 @@ stockcode|description                       |invoice_count
 <br/><br/>
 
 #### How many customers per country?
+
+<iframe
+    src="http://dash-analytics-test.herokuapp.com/public/question/583290eb-9b65-4de2-b3bd-ddda10c362f0"
+    frameborder="0"
+    width="800"
+    height="600"
+    allowtransparency
+></iframe>
