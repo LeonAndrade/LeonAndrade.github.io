@@ -18,7 +18,7 @@
   - [How many products per invoice?](#how-many-products-per-invoice)
   - [How many customers per country?](#how-many-customers-per-country)
 
-#### [Dashboard Queries]()
+#### [Dashboard Queries](#dashboard-queries)
 
 <br/><br/>
 
@@ -538,6 +538,14 @@ stockcode|description                       |unique_customers|unique_countries
 
 <br/><br/>
 
-#### How many products per invoice?
+From here on we could continue our exploration, trying to understand all the meaningful relations between products, orders, customers and countries.
 
+There is enough data here alone to learn many things and ask many questions, but like any creative endeavour, one must know when to stop and present what was found so far before, get feedback from peers and keep check with relevant stakeholders that relie on your analysis.
+
+Data can tell us a lot, but data alone is note enought, Data Science/Analytics/Engineering is about learning, sharing, questioning and communicating. It's about translation, meaning and memory, about action and reaction.
+
+**Good data analytics should feel intuitive and simple, despite how technically challenging it can be to achieve such results.**
+
+
+## Dashboard Queries
 
