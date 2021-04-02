@@ -190,39 +190,17 @@ Let's now see what time window is covered by our data
 
 ```sql
     SELECT
-        DATE_TRUNC('mon', CAST(invoicedate AS timestamp)) AS month,
-        COUNT(distinct invoice) AS count_invoice
+        CAST(DATE_TRUNC('mon', invoicedate)AS DATE) AS month,
+        COUNT(DISTINCT invoice)                     AS count_invoice,
+        SUM(price)                                  AS sum_price,
+        COUNT(DISTINCT customer_id)                 AS unique_customers,
+        SUM(quantity)                               AS sum_quantity
+
     FROM online_retail
-    GROUP BY mon
-    ORDER BY mon DESC
+    GROUP BY month
+    ORDER BY month DESC
 ```
-month|count_invoice
-:--------:|:------:
-2011-12-01|1015
-2011-11-01|3462
-2011-10-01|2637
-2011-09-01|2327
-2011-08-01|1737
-2011-07-01|1927
-2011-06-01|2012
-2011-05-01|2162
-2011-04-01|1744
-2011-03-01|1983
-2011-02-01|1393
-2011-01-01|1476
-2010-12-01|2025
-2010-11-01|3669
-2010-10-01|2965
-2010-09-01|2375
-2010-08-01|1877
-2010-07-01|2017
-2010-06-01|2216
-2010-05-01|2418
-2010-04-01|1892
-2010-03-01|2367
-2010-02-01|1969
-2010-01-01|1633
-2009-12-01|2330
+![Monthly Summary](img/online_retail_monthly_summary.png)
 
 Now we know that this dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought more than **5 thousand unique products** in a **two year window** from december 2009 to december 2011.
 
@@ -470,4 +448,3 @@ stockcode|description                       |invoice_count
 
 #### How many customers per country?
 
-![Monthly Summary](img/online_retail_monthly_summary.png)
