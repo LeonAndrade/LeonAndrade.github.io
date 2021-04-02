@@ -332,6 +332,9 @@ It seems even when grouping by weeks, december 2010 had a great week of sales. A
 
 By transactions we are assuming the sum of prices for a single invoice.
 _(obs: there are a few prices with negative value and a description os adjusted bad debit, so we are going to disconsider all negative prices)_
+
+The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
+
 ```sql
 WITH a AS (
 
@@ -341,28 +344,84 @@ WITH a AS (
     FROM online_retail
     WHERE price > 0
     GROUP BY 1
-    ORDER BY 2 DESC
+    ORDER BY 2 asc
 
+), b as (
+
+	SELECT
+	    *,
+        ntile(4) over (order by sum_price asc) as quartile
+	FROM a
 )
 
-SELECT 'Min'    AS measure, round(min(sum_price)::numeric,2)         AS value FROM a
+select
+    'first Quartile'                                 as measure,
+    max(sum_price)                                   as value
+    from b
+    where quartile = 1
 union
-SELECT 'Avg'    AS measure, round(avg(sum_price)::numeric,2)         AS value FROM a
+select
+    'median'                                         as measure,
+    max(sum_price)                                   as value
+    from b
+    where quartile = 2
 union
-SELECT 'Max'    AS measure, round(max(sum_price)::numeric,2)         AS value FROM a
+select
+    'third quartile'                                 as measure,
+    max(sum_price)                                   as value
+    from b
+    where quartile = 3
 union
-SELECT 'StdDev' AS measure, round(stddev_samp(sum_price)::numeric,2) AS value FROM a
+SELECT
+	'Min'                                            AS measure,
+	round(min(sum_price)::numeric,2)                 AS value
+	FROM b
+union
+SELECT
+    'Avg'                                            AS measure,
+    round(avg(sum_price)::numeric,2)                 AS value
+	FROM b
+union
+SELECT
+    'StdDev'                                    AS measure,
+    round(stddev_samp(sum_price)::numeric,2)    AS value
+	FROM b
+union
+SELECT
+    'Max'                                       AS measure,
+    round(max(sum_price)::numeric,2)            AS value
+	FROM b
+order by value asc
 ```
-measure|value
-:-----:|:---:
-Min    |0.01
-StdDev |532.73
-Max    |38970.00
-Avg    |105.88
+measure       |value
+:------------:|:-------:
+Min	          |0.01
+first Quartile|11.30
+median        |37.35
+third quartile|83.47
+Avg	          |105.88
+StdDev        |532.73
+Max           |38970.00
 
-This tell us that while the average price is just over $100.00, the standard deviation is roughly 5 times that, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some outliers.
+This tell us that while the average price is just over $100.00, 75% of the prices are under $83.00 .<br/>
+The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some outliers.
 
-Let's go beyond SQL and plot this with python to better visualize the distribution of prices.
+> while SQL can do most of the work, the python library Pandas can do it with less typing:
+> ```python
+> df = db.execute("""
+>   SELECT
+>        distinct invoice,
+>        sum(price) as invoice_amount
+>    FROM online_retail
+>    where price > 0
+>    GROUP BY 1
+>    ORDER BY 2 asc
+>
+> """)
+>
+> r = df.describe()
+> r.sort_values('invoice_amount').round(2)
+```
 
 
 <br/><br/>
