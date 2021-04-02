@@ -512,11 +512,28 @@ stockcode|description                       |invoice_count|quantity
 
 Who would guess heart hanging light holders would be so popular?!
 
-<img src='img/white-hanging-heart-t-light-holder.jpg'
-     alt='White Hanging Light Holder'
-     width=200 height=200
-     text-align=center
-     style='text-align:center'>
+<img src='img/white-hanging-heart-t-light-holder.jpg' alt='White Hanging Light Holder' width=200 height=200>
+
+And even if we filter by unique customers these hanging lights still outperform the other products, being ordered by 1.4k unique customers in more than 20 countries!
+
+```sql
+select
+	stockcode,
+	description,
+	count(distinct customer_id) as unique_customers,
+	count(distinct country) as unique_countries
+from online_retail
+group by 1, 2
+order by 3 desc
+limit 5
+```
+stockcode|description                       |unique_customers|unique_countries
+:-------:|:--------------------------------:|:--------------:|:--------------:
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|1494            |23
+22423    |REGENCY CAKESTAND 3 TIER          |1316            |31
+22138    |BAKING SET 9 PIECE RETROSPOT      |1152            |31
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |1012            |19
+22086    |PAPER CHAIN KIT 50'S CHRISTMAS    |896             |12
 
 <br/><br/>
 
