@@ -512,7 +512,7 @@ stockcode|description                       |invoice_count|quantity
 
 Who would guess heart hanging light holders would be so popular?!
 
-<img src='img/white-hanging-heart-t-light-holder.jpg' alt='White Hanging Light Holder' width=200 height=200>
+<img src='img/white-hanging-heart-t-light-holder.jpg' alt='White Hanging Light Holder' width=200 height=200 text-align=center>
 
 <br/><br/>
 
