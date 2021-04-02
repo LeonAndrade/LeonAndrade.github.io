@@ -421,12 +421,13 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 >
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
-```
+> ```
 
 
 <br/><br/>
 
 #### Which products are most popular?
+
 ```sql
 SELECT
     stockcode,
