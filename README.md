@@ -511,7 +511,7 @@ stockcode|description                       |invoice_count|quantity
 85099B   |JUMBO BAG RED RETROSPOT           |3444         |77671
 
 Who would guess heart hanging light holders would be so popular?!
-![White Hanging Light Holder](img/white-hanging-heart-t-light-holder.jpg)[Source](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.pt%2Fpin%2F453526624944844521%2F%3Famp_client_id%3DCLIENT_ID(_)%26mweb_unauth_id%3D%26amp_url%3Dhttps%253A%252F%252Fwww.pinterest.pt%252Famp%252Fpin%252F453526624944844521%252F%26from_amp_pin_page%3Dtrue&psig=AOvVaw1h0Yhs8FNfh7UgIA8K3LFJ&ust=1617490271106000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCzzIbT4O8CFQAAAAAdAAAAABAD)
+![White Hanging Light Holder](img/white-hanging-heart-t-light-holder.jpg =200x200)[Source](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.pt%2Fpin%2F453526624944844521%2F%3Famp_client_id%3DCLIENT_ID(_)%26mweb_unauth_id%3D%26amp_url%3Dhttps%253A%252F%252Fwww.pinterest.pt%252Famp%252Fpin%252F453526624944844521%252F%26from_amp_pin_page%3Dtrue&psig=AOvVaw1h0Yhs8FNfh7UgIA8K3LFJ&ust=1617490271106000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCzzIbT4O8CFQAAAAAdAAAAABAD)
 
 
 <br/><br/>
