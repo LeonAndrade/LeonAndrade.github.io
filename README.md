@@ -538,6 +538,8 @@ stockcode|description                       |unique_customers|unique_countries
 
 <br/><br/>
 
+#### Closing remarks
+
 From here on we could continue our exploration, trying to understand all the meaningful relations between products, orders, customers and countries.
 
 There is enough data here alone to learn many things and ask many questions, but like any creative endeavour, one must know when to stop and present what was found so far before, get feedback from peers and keep check with relevant stakeholders that relie on your analysis.
