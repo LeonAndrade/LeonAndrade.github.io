@@ -318,7 +318,7 @@ WITH a AS (
 
     SELECT
         invoice,
-        sum(price) AS sum_price
+        sum(price)                             AS sum_price
     FROM online_retail
     WHERE price > 0
     GROUP BY 1
@@ -328,36 +328,36 @@ WITH a AS (
 
 	SELECT
 	    *,
-        ntile(4) over (order by sum_price asc) as quartile
+        ntile(4) over (order by sum_price asc) AS quartile
 	FROM a
 )
 
 select
-    'first Quartile'                                 as measure,
-    max(sum_price)                                   as value
+    'first Quartile'                           AS measure,
+    max(sum_price)                             AS value
     from b
     where quartile = 1
 union
 select
-    'median'                                         as measure,
-    max(sum_price)                                   as value
+    'median'                                   AS measure,
+    max(sum_price)                             AS value
     from b
     where quartile = 2
 union
 select
-    'third quartile'                                 as measure,
-    max(sum_price)                                   as value
+    'third quartile'                           AS measure,
+    max(sum_price)                             AS value
     from b
     where quartile = 3
 union
 SELECT
-	'Min'                                            AS measure,
-	round(min(sum_price)::numeric,2)                 AS value
+	'Min'                                       AS measure,
+	round(min(sum_price)::numeric,2)            AS value
 	FROM b
 union
 SELECT
-    'Avg'                                            AS measure,
-    round(avg(sum_price)::numeric,2)                 AS value
+    'Avg'                                       AS measure,
+    round(avg(sum_price)::numeric,2)            AS value
 	FROM b
 union
 SELECT
