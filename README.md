@@ -328,48 +328,48 @@ WITH a AS (
 
     SELECT
 	    *,
-        ntile(4) over (order by sum_price asc) AS quartile
+        ntile(4) OVER (ORDER BY sum_price ASC) AS quartile
     FROM a
 )
 
-select
+SELECT
     'first Quartile'                           AS measure,
     max(sum_price)                             AS value
     from b
     where quartile = 1
-union
-select
+UNION
+SELECT
     'median'                                   AS measure,
     max(sum_price)                             AS value
-    from b
-    where quartile = 2
-union
-select
+    FROM b
+    WHERE quartile = 2
+UNION
+SELECT
     'third quartile'                           AS measure,
     max(sum_price)                             AS value
-    from b
-    where quartile = 3
-union
+    FROM b
+    WHERE quartile = 3
+UNION
 SELECT
     'Min'                                      AS measure,
     round(min(sum_price)::numeric,2)           AS value
     FROM b
-union
+UNION
 SELECT
     'Avg'                                      AS measure,
     round(avg(sum_price)::numeric,2)           AS value
     FROM b
-union
+UNION
 SELECT
     'StdDev'                                   AS measure,
     round(stddev_samp(sum_price)::numeric,2)   AS value
     FROM b
-union
+UNION
 SELECT
     'Max'                                      AS measure,
     round(max(sum_price)::numeric,2)           AS value
     FROM b
-order by value asc
+ORDER BY value ASC
 ```
 measure       |value
 :------------:|:-------:
