@@ -17,7 +17,7 @@
   - [What is the range of prices?](#what-is-the-range-of-prices)
   - [How many products per invoice?](#how-many-products-per-invoice)
   - [How many customers per country?](#how-many-customers-per-country)
-
+  - [Closing Remarks](#closing-remarks)
 #### [Dashboard Queries](#dashboard-queries)
 
 <br/><br/>
