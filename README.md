@@ -470,10 +470,4 @@ stockcode|description                       |invoice_count
 
 #### How many customers per country?
 
-<iframe
-    src="http://dash-analytics-test.herokuapp.com/public/question/583290eb-9b65-4de2-b3bd-ddda10c362f0"
-    frameborder="0"
-    width="800"
-    height="600"
-    allowtransparency
-></iframe>
+![Monthly Summary](img/online_retail_monthly_summary.png)
