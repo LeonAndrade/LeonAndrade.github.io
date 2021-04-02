@@ -326,10 +326,10 @@ WITH a AS (
 
 ), b as (
 
-	SELECT
+    SELECT
 	    *,
         ntile(4) over (order by sum_price asc) AS quartile
-	FROM a
+    FROM a
 )
 
 select
@@ -351,24 +351,24 @@ select
     where quartile = 3
 union
 SELECT
-	'Min'                                      AS measure,
-	round(min(sum_price)::numeric,2)           AS value
-	FROM b
+    'Min'                                      AS measure,
+    round(min(sum_price)::numeric,2)           AS value
+    FROM b
 union
 SELECT
     'Avg'                                      AS measure,
     round(avg(sum_price)::numeric,2)           AS value
-	FROM b
+    FROM b
 union
 SELECT
     'StdDev'                                   AS measure,
     round(stddev_samp(sum_price)::numeric,2)   AS value
-	FROM b
+    FROM b
 union
 SELECT
     'Max'                                      AS measure,
     round(max(sum_price)::numeric,2)           AS value
-	FROM b
+    FROM b
 order by value asc
 ```
 measure       |value
