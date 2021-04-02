@@ -405,14 +405,13 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 >    where price > 0
 >    GROUP BY 1
 >    ORDER BY 2 asc
->
 > """
 >
 > df = pd.read_sql(sql, engine)
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
 > ```
-
+<img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=100 height=150>
 
 <br/><br/>
 
@@ -519,15 +518,15 @@ Who would guess heart hanging light holders would be so popular?!
 And even if we filter by unique customers these hanging lights still outperform the other products, being ordered by 1.4k unique customers in more than 20 countries!
 
 ```sql
-select
+SELECT
 	stockcode,
 	description,
-	count(distinct customer_id) as unique_customers,
-	count(distinct country) as unique_countries
-from online_retail
-group by 1, 2
-order by 3 desc
-limit 5
+	count(DISTINCT customer_id) AS unique_customers,
+	count(DISTINCT country)     AS unique_countries
+FROM online_retail
+GROUP BY 1, 2
+ORDER BY 3 desc
+LIMIT 5
 ```
 stockcode|description                       |unique_customers|unique_countries
 :-------:|:--------------------------------:|:--------------:|:--------------:
