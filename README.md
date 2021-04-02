@@ -516,8 +516,7 @@ Who would guess heart hanging light holders would be so popular?!
      alt='White Hanging Light Holder'
      width=200 height=200
      text-align=center
-     style='text-align:center;border-sytle:solid;border-width:1px;border-color:blue'
->
+     style='text-align:center'>
 
 <br/><br/>
 
