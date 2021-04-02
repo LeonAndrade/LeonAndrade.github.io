@@ -411,7 +411,7 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
 > ```
-<img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=250>
+<img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=220>
 
 <br/><br/>
 
