@@ -552,6 +552,7 @@ Now, lets try and plot all this information combined to see the performances for
     </figcaption>
 </figure>
 
+
 Which products show in all three results?
 
 ```sql
