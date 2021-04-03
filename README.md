@@ -227,9 +227,9 @@ column_name|unique_values
 :---------:|:-----------:
 customer_id|5942
 
- _(*note that maybe 1/4 of the total is not being considered because of the null values*)_
+ _(*note that the real number of unique customer may actually be higher, since nearly 1/4 of all customer_id contain null values*)_
 
-We can take this one step further by get this count for the 5 coutries with most customers
+We can take this one step further and get the 5 coutries with most customers.
 
 ```sql
 SELECT
@@ -248,7 +248,7 @@ France        |95
 Spain         |41
 Belgium       |29
 
-Most of the customers are from UK followed by a few neighbouring country, this might suggest that this data is from an English online retailer that sells mostly inside Europe.
+Most of the customers are from UK, followed by a few neighbouring country, this might suggest that this data is from an English online retailer that sells mostly within Europe.
 
 <br/><br/>
 
@@ -299,7 +299,7 @@ GROUP BY week
 ORDER BY transaction_count DESC
 LIMIT 10
 ```
-day        |transaction_count
+week       |transaction_count
 :---------:|:---------------:
 2010-12-06 |28967
 2010-11-29 |26655
@@ -318,13 +318,13 @@ It seems even when grouping by weeks, december 2010 had a great week of sales. A
 
 #### What is the average value of a transaction?
 
-By transactions we are assuming the sum of prices for a single invoice.
-_(obs: there are a few prices with negative value and a description os adjusted bad debit, so we are going to disconsider all negative prices)_
+By transactions we are assuming the sum of prices for a single invoice.<br/>
+_(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
 The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
 
 ```sql
-WITH a AS (
+with a as (
 
     SELECT
         invoice,
@@ -343,19 +343,24 @@ WITH a AS (
 )
 
 SELECT
-    'first Quartile'                           AS measure,
+    'First Quartile'                           AS measure,
     max(sum_price)                             AS value
     from b
     where quartile = 1
 UNION
 SELECT
-    'median'                                   AS measure,
+    'Mode'                                     AS measure,
+    mode() WITHIN GROUP (ORDER BY sum_price)   AS value
+   FROM b
+UNION
+SELECT
+    'Median'                                   AS measure,
     max(sum_price)                             AS value
     FROM b
     WHERE quartile = 2
 UNION
 SELECT
-    'third quartile'                           AS measure,
+    'Third Quartile'                           AS measure,
     max(sum_price)                             AS value
     FROM b
     WHERE quartile = 3
@@ -384,15 +389,19 @@ ORDER BY value ASC
 measure       |value
 :------------:|:-------:
 Min	          |0.01
-first Quartile|11.30
-median        |37.35
-third quartile|83.47
+First Quartile|11.30
+Median        |37.35
+Third Quartile|83.47
 Avg	          |105.88
 StdDev        |532.73
 Max           |38970.00
 
-This tell us that while the average price is just over $100.00, 75% of the prices are under $83.00 .<br/>
+This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
 The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
+
+In other words, when we ask about averages, we are often looking for a *"center of balance"* in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
+
+If we look closely, we can see that half of the prices are bellow $37.35, which suggests that the mode
 
 > while SQL can do most of the work, the python library Pandas can do it with less typing:
 > ```python
