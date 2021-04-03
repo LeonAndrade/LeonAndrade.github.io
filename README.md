@@ -309,7 +309,7 @@ Seems like november is the best month for sales.
 
 #### What is the average value of a transaction?
 
-By transactions i am assuming the sum of prices times the quantity ordered for any single invoice.<br/>
+Considering the transaction value as the sum of prices times the quantity ordered for any single invoice.<br/>
 _(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
 The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
@@ -475,7 +475,7 @@ What are we going to consider as popular?<br/>
 SELECT
     stockcode,
     description,
-    COUNT(invoice) AS transactions
+    COUNT(distinct invoice) AS transactions
 FROM online_retail
 GROUP BY 1, 2
 ORDER BY 3 DESC
@@ -483,16 +483,16 @@ LIMIT 10
 ```
 stockcode|description                       |transactions
 :-------:|:--------------------------------:|:----------:
-85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817
-22423    |REGENCY CAKESTAND 3 TIER          |4412
-85099B   |JUMBO BAG RED RETROSPOT           |3444
-84879    |ASSORTED COLOUR BIRD ORNAMENT     |2958
-47566    |PARTY BUNTING                     |2765
-21232    |STRAWBERRY CERAMIC TRINKET BOX    |2613
-20727    |LUNCH BAG  BLACK SKULL.           |2529
-21931    |JUMBO STORAGE BAG SUKI            |2434
-22469    |HEART OF WICKER SMALL             |2319
-22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2297
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5495
+22423    |REGENCY CAKESTAND 3 TIER          |4261
+85099B   |JUMBO BAG RED RETROSPOT           |3320
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2827
+47566    |PARTY BUNTING                     |2699
+21232    |STRAWBERRY CERAMIC TRINKET BOX    |2488
+20727    |LUNCH BAG  BLACK SKULL.           |2396
+21931    |JUMBO STORAGE BAG SUKI            |2364
+22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2215
+22469    |HEART OF WICKER SMALL             |2174
 
 - **By total quantity sold**
 
@@ -545,7 +545,7 @@ POST     |POSTAGE                            |112341.00
 
 Now, lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
 
-<img src='img/popular-products.png' alt='Most Popular Products'>
+<img src='img/popular_products.png' alt='Most Popular Products'>
 
 Which products show in all three results?
 
