@@ -399,7 +399,7 @@ Max           |38970.00
 
 <br/>
 
-> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can get the same result with much less typing!
+> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can obtain the same result with much less typing!
 > ```python
 > import pandas as pd
 > sql = """
