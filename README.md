@@ -703,7 +703,7 @@ Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Eng
 <a href='http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4'>
 <img src='img/metabase-logo.png' alt='metabase logo' height=120 width=230><br/>
 <b>&#x21D2 Take me to the Dashboard!</b>
-<a>
+</a>
 <br/><br/>
 
 The syntax `{% raw %}[[ {{ Filter Name }} ]]{% endraw %}` is a template syntax used by metabase to allow for dynamic charts using SQL and custom filters.
