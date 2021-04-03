@@ -134,7 +134,7 @@ From a quick look at this we can say that this data is about orders made by cust
 
   - Products:
     - `stockcode`: Categorical / Serial. It seems to be the unique ID of a product.
-    - `price`: Quantitative. Assuming its the price for that row's `quantity` value.
+    - `price`: Quantitative. Assuming its the unitary price of a product.
     - `description`: Categorical. Description of the product.
 
   - Customers:
@@ -144,7 +144,7 @@ From a quick look at this we can say that this data is about orders made by cust
   - Orders:
     - `invoice`: Serial. Unique ID of each order. A single order can have multiple products.
     - `invoicedate`: Timestamp. Assuming it's in UTC-0 because most of the customers are from the UK.
-    - `quantity`: Quantitative. Number of items ordered for any given product on an invoice.
+    - `quantity`: Quantitative. Number of unities ordered for a product.
 
 <br/><br/>
 
@@ -248,7 +248,7 @@ France        |95
 Spain         |41
 Belgium       |29
 
-Most of the customers are from UK, followed by a few neighbouring country, this might suggest that this data is from an English online retailer that sells mostly within Europe.
+Most of the customers are from UK, followed by a few neighbouring countries, this might suggest that this data is from an English online retailer that sells mostly within Europe.
 
 <br/><br/>
 
@@ -256,7 +256,7 @@ Most of the customers are from UK, followed by a few neighbouring country, this 
 
 ```sql
 SELECT
-    cast(date_trunc('d',invoicedate) AS DATE) AS day,
+    CAST(date_trunc('d',invoicedate) AS DATE) AS day,
     COUNT(invoice) AS transaction_count
 FROM online_retail
 GROUP BY day
