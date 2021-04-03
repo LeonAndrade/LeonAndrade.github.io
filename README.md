@@ -318,7 +318,7 @@ Even when grouping by weeks, december 2010 had a great week of sales. Also by lo
 
 #### What is the average value of a transaction?
 
-By transactions we are assuming the sum of prices time quantity ordered for any single invoice.<br/>
+By transactions i am assuming the sum of prices times the quantity ordered for any single invoice.<br/>
 _(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
 The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
@@ -419,12 +419,11 @@ Max           |168469.60
 > <img src='img/price-range.png' alt='pandas pd.describe() output' width=180 height=220>
 >
 
-This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
-The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
+This tell us that **while the average price is just over $500.00, half of the prices are under $300.00 and the most common value for as transaction is as low as $15.00**.<br/>
 
-In other words, when we ask about averages, we are often looking for a *"center of balance"* in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
+The standard deviation is roughly 3 times the average, while the maximum price more than $160k, which indicates a large deviation probably due to some large outliers.
 
-If we look closely, we can see that while the average is as high as $100.00, half of the prices are below $37.35, and the most common value, the mode, is as low as $1.25.
+In other words, **when we ask about averages, we are often looking for a *"center of balance"*** in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
 
 With this in mind we know there is a high concentration of low prices that decreases fast towards higher prices.
 
@@ -434,28 +433,41 @@ let's plot this with some python:
 import pandas as pd
 
 sql = """
-SELECT
-    invoice,
-    sum(price) AS sum_price
-FROM online_retail
-WHERE price > 0
-GROUP BY 1
-ORDER BY 2 asc
+
+    SELECT
+        invoice,
+        sum(price * quantity) AS transaction
+    FROM online_retail
+    WHERE price > 0 and quantity > 0
+    GROUP BY 1
+    ORDER BY 2 asc
+
 """
+df = pd.read_sql(sql, engine)
 
-# return the query resultas as a pandas DataFrame
-df = pd.read_sql(sql, db.engine)
-
-# since most of the prices are under $100, let's filter out any price above 500
-df = df[df['sum_price'] < 500]
+df = df[df['transaction'] < 3000]
+mean = df.mean()['transaction']
+median = df.median()['transaction']
+mode = df.mode()['transaction'].iloc[0]
 
 # plotting the frequency histogram
 plt.figure(figsize=(10,5))
 plt.ylabel('Frequency')
-plt.xlabel('Unique Invoice Price')
-plt.hist(x=df['sum_price'], bins=25)
+plt.xlabel('Transaction Amount')
+plt.hist(x=df['transaction'], bins=100)
+
+plt.ylim(0,3700)
+
+plt.axvline(mean, color='r', linestyle='dashed', linewidth=1)
+plt.text(mean + 10, 3200, 'Mean')
+
+plt.axvline(median, color='r', linestyle='dashed', linewidth=1)
+plt.text(median + 10, 3500, 'Median')
+
+plt.axvline(mode, color='r', linestyle='dashed', linewidth=1)
+plt.text(mode + 10, 3500, 'Mode')
 ```
-<img src='img/price-frequency.png' alt='price histogram'>
+<img src='img/transaction_amount.png' alt='transaction amount histogram'>
 
 <br/><br/>
 
