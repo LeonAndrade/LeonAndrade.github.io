@@ -483,14 +483,14 @@ We can see the top 10 products by number of distinct invoices, which product is 
 SELECT
     stockcode,
     description,
-    COUNT(invoice) AS invoice_count
+    COUNT(invoice) AS transactions
 FROM online_retail
 GROUP BY 1, 2
 ORDER BY 3 DESC
 LIMIT 10
 ```
-stockcode|description                       |invoice_count
-:-------:|:--------------------------------:|:-----------:
+stockcode|description                       |transactions
+:-------:|:--------------------------------:|:----------:
 85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817
 22423    |REGENCY CAKESTAND 3 TIER          |4412
 85099B   |JUMBO BAG RED RETROSPOT           |3444
@@ -542,7 +542,7 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        COUNT(invoice) AS invoice_count
+        COUNT(invoice) AS transactions
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -564,12 +564,12 @@ WITH a as (
 SELECT
 	a.stockcode,
 	a.description,
-	a.invoice_count,
+	a.transactions,
 	b.quantity
 FROM a INNER JOIN b ON a.stockcode = b.stockcode
 ORDER BY quantity DESC
 ```
-stockcode|description                       |invoice_count|quantity
+stockcode|description                       |transactions |quantity
 :-------:|:--------------------------------:|:-----------:|:------:
 85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817         |92453
 84879    |ASSORTED COLOUR BIRD ORNAMENT     |2958         |81306
