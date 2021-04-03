@@ -698,16 +698,16 @@ The syntax `[[ {{ Filter Name }} ]]` is a template syntax used by metabase to al
 
 #### Banner
 ```sql
-select concat('You are viewing data from : ', to_char(m, 'Month YYYY'))
-from (
+SELECT concat('You are viewing data from : ', to_char(mon, 'Month YYYY'))
+FROM (
 
-    SELECT date_trunc('mon', invoicedate) as m
-    from online_retail
+    SELECT date_trunc('mon', invoicedate) AS mon
+    FROM online_retail
     {% raw %}
-    [[where {{Month}}]]
+    [[WHERE {{Month}}]]
     {% endraw %}
-) as a
-limit 1
+) AS a
+LIMIT 1
 ```
 <br/><br/>
 
@@ -715,7 +715,7 @@ limit 1
 ```sql
     SELECT COUNT(DISTINCT customer_id)
     FROM online_retail
-    WHERE customer_id is not null
+    WHERE customer_id IS NOT NULL
     {% raw %}
     [[AND {{Month}}]]
     [[AND {{Country}}]]
@@ -726,42 +726,43 @@ limit 1
 
 #### Transactions
 ```sql
-select
-    count(distinct invoice) as Transactions
-from online_retail
+SELECT
+    COUNT(DISTINCT invoice) AS Transactions
+FROM online_retail
 {% raw %}
-[[where {{Month}}]]
-[[and {{Country}}]]
+[[WHERE {{Month}}]]
+[[AND {{Country}}]]
 {% endraw %}
 ```
 <br/><br/>
 
 #### Revenue
 ```sql
-select
-    sum(price * quantity)
-from online_retail
-where price > 0 and quantity > 0
+SELECT
+    SUM(price * quantity)
+FROM online_retail
+WHERE price > 0 AND quantity > 0
 {% raw %}
-[[where {{Month}}]]
-[[and {{Country}}]]
+[[WHERE {{Month}}]]
+[[AND {{Country}}]]
 {% endraw %}
 ```
 <br/><br/>
 
 #### Daily Transactions and Cumulative Revenue
 ```sql
-select
+SELECT
     day,
     daily_transactions,
-    SUM(revenue) OVER (order by day rows between unbounded preceding and current row) as cumulative_revenue
-from (
-    select
+    SUM(revenue) OVER (ORDER BY day ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS cumulative_revenue
+FROM (
+
+    SELECT
         DATE_TRUNC('d', CAST(invoicedate AS timestamp)) AS day,
-        COUNT(distinct invoice) AS daily_transactions,
-        SUM(price * quantity) AS revenue
+        COUNT(distinct invoice)                         AS daily_transactions,
+        SUM(price * quantity)                           AS revenue
     FROM online_retail
-    WHERE price > 0 and quantity > 0
+    WHERE price > 0 AND quantity > 0
     {% raw %}
     [[AND {{Month}}]]
     [[AND {{Country}}]]
@@ -776,20 +777,20 @@ from (
 
 #### Most Popular Products
 ```sql
-    SELECT
-        stockcode,
-        description,
-        COUNT(distinct invoice) As transactions,
-        sum(quantity)           as quantity,
-        sum(price * quantity)   as revenue
-    FROM online_retail
-    {% raw %}
-    [[WHERE {{Month}}]]
-    [[AND {{Country}}]]
-    {% endraw %}
-    GROUP BY 1, 2
-    ORDER BY 3 DESC
-    LIMIT 10
+SELECT
+    stockcode,
+    description,
+    COUNT(distinct invoice) As transactions,
+    SUM(quantity)           AS quantity,
+    SUM(price * quantity)   AS revenue
+FROM online_retail
+{% raw %}
+[[WHERE {{Month}}]]
+[[AND {{Country}}]]
+{% endraw %}
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 10
 ```
 <br/><br/>
 
@@ -797,12 +798,12 @@ from (
 ```sql
 SELECT
     customer_id,
-    sum(price * quantity)   as revenue,
-    sum(quantity)           as quantity,
-    count(distinct invoice) as transactions
+    SUM(price * quantity)   AS revenue,
+    SUM(quantity)           AS quantity,
+    COUNT(DISTINCT invoice) AS transactions
 FROM online_retail
-WHERE customer_id is not null
-  AND price > 0 and quantity > 0
+WHERE customer_id IS NOT NULL
+  AND price > 0 AND quantity > 0
   {% raw %}
   [[AND {{Month}}]]
   [[AND {{Country}}]]
@@ -815,11 +816,11 @@ LIMIT 20
 
 #### Top 10 Products - Transactions
 ```sql
-select
+SELECT
     stockcode,
     description,
-    count(distinct invoice) as transactions,
-    sum(quantity) as quantity
+    COUNT(distinct invoice) AS transactions,
+    SUM(quantity)           AS quantity
 FROM online_retail
 {% raw %}
 WHERE {{Month}}
@@ -834,11 +835,11 @@ LIMIT 10
 
 #### Top 10 Products - Quantity
 ```sql
-select
+SELECT
     stockcode,
     description,
-    count(distinct invoice) as transactions,
-    sum(quantity) as quantity
+    COUNT(distinct invoice) as transactions,
+    SUM(quantity) as quantity
 
 FROM online_retail
 {% raw %}
