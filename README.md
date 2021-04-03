@@ -445,29 +445,33 @@ sql = """
 """
 df = pd.read_sql(sql, engine)
 
-df = df[df['transaction'] < 3000]
 mean = df.mean()['transaction']
 median = df.median()['transaction']
 mode = df.mode()['transaction'].iloc[0]
 
 # plotting the frequency histogram
 plt.figure(figsize=(10,5))
+
+plt.ylim(0,4000)
+plt.xlim(-50,2000)
+
 plt.ylabel('Frequency')
 plt.xlabel('Transaction Amount')
-plt.hist(x=df['transaction'], bins=100)
-
-plt.ylim(0,3700)
+plt.hist(x=df['transaction'], bins=5000)
 
 plt.axvline(mean, color='r', linestyle='dashed', linewidth=1)
-plt.text(mean + 10, 3200, 'Mean')
+plt.text(mean + 10, 3600, f'Mean\n{mean:.2f}')
 
 plt.axvline(median, color='r', linestyle='dashed', linewidth=1)
-plt.text(median + 10, 3500, 'Median')
+plt.text(median + 10, 3600, f'Median\n{median:.2f}')
 
 plt.axvline(mode, color='r', linestyle='dashed', linewidth=1)
-plt.text(mode + 10, 3500, 'Mode')
+plt.text(mode + 10, 3600, f'Mode\n{mode:.2f}')
 ```
-<img src='img/transaction_amount.png' alt='transaction amount histogram'>
+<img src='img/transaction-amount.png' alt='transaction amount histogram'>
+
+With a quick glance at this histogram we can say that the mean (average )
+
 
 <br/><br/>
 
