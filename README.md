@@ -413,7 +413,7 @@ Max           |168469.60
 >    ORDER BY 2 asc
 > """
 >
-> df = pd.read_sql(sql, db.engine)
+> df = pd.read_sql(sql, engine)
 > r = df.describe()
 > r.sort_values('transaction_amount').round(2)
 > ```
