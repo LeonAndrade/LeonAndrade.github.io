@@ -397,7 +397,7 @@ Avg	          |105.88
 StdDev        |532.73
 Max           |38970.00
 
-> While SQL can do most of the work, using the python library pandas we can get the same result with much less typing!
+> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can get the same result with much less typing!
 > ```python
 > import pandas as pd
 > sql = """
