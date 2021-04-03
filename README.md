@@ -684,9 +684,9 @@ The best way would be to understand where these stockcodes come from and how the
 
 From here on we could continue our exploration, trying to understand all the meaningful relations between products, orders, customers and countries.
 
-There is enough data here alone to learn many things and ask many questions, but like any creative endeavour, one must know when to stop and present what was found so far before, get feedback from peers and keep check with relevant stakeholders that relie on your analysis.
+There is enough data here alone to learn many things and ask many questions, but like any creative endeavour, one must know when to stop and present what was found so far, get feedback from peers and keep check with relevant stakeholders that relie on your analysis before going further with the analysis.
 
-Data can tell us a lot, but data alone is note enought, Data Science/Analytics/Engineering is about learning, sharing, questioning and communicating. It's about translation, meaning and memory, about action and reaction.
+Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Engineering is about learning, sharing, questioning and communicating. It's about translation, meaning and memory, about being curious and open-minded.
 
 **Good data analytics should feel intuitive and simple, despite how technically challenging it can be to achieve such results.**
 
