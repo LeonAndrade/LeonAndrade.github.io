@@ -38,7 +38,7 @@ This document describes my process for the Exploratory Data Analysis (EDA) of th
 
 `TLDR`: The present document contains a more throughout description of the process, queries and reasoning i use as starting point for most analysis.
 
-If you are a visual learner or not so much into the "*tech-side*" of data, there is a dashboard with filters for you to play around and come up with some new insights!<br/>
+If you are a visual learner or not so much into the "*tech-side*" of data, there is a dashboard with filters for you to play around and come up with some of your own insights!<br/>
 
 You can access the dashboard here:
 **[Online Retail - Dashboard](http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4)**
@@ -231,7 +231,7 @@ customer_id|5942
 
  _(*note that the real number of unique customer may actually be higher, since nearly 1/4 of all customer_id contain null values*)_
 
-We can take this one step further and get the 5 coutries with most customers.
+We can take this one step further and get the 5 countries with most customers.
 
 ```sql
 SELECT
@@ -250,7 +250,7 @@ France        |95
 Spain         |41
 Belgium       |29
 
-Most of the customers are from UK, followed by a few neighbouring countries, this might suggest that this data is from an English online retailer that sells mostly within Europe.
+Most of the customers are from the United Kingdom, followed by a few neighbouring countries, this might suggest that the data is from a british online retailer that sells mostly within Europe.
 
 <br/><br/>
 
@@ -314,13 +314,13 @@ week      |weekly_transactions
 2011-11-21|754
 2010-10-18|750
 
-Seems like november is the best month for sales.
+Seems like november has been the best month for sales on both years.
 
 <br/><br/>
 
 #### What is the average value of a transaction?
 
-Considering the transaction value as the sum of prices times the quantity ordered for any single invoice.<br/>
+We will consideri the **transaction value** as the **sum of prices times the quantity ordered** for any single invoice.<br/>
 _(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
 The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
