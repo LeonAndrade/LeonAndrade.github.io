@@ -572,7 +572,7 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        COUNT(distinct invoice) AS transactions
+        COUNT(distinct invoice)                 AS transactions
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -583,7 +583,7 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        sum(quantity) AS quantity
+        sum(quantity)                           AS quantity
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -655,15 +655,15 @@ stockcode|description                       |unique_customers|unique_countries
 While there is just one distinct stockcode and 5 rows where the price is negative, there are more than 4,000 distinct stockcode values where the quantity for that row is negative.
 
 ```sql
-select
-    distinct stockcode,
+SELECT
+    DISTINCT stockcode,
     invoice,
     quantity,
     price,
     description
-from online_retail
-where price < 0
-order by 1
+FROM online_retail
+WHERE price < 0
+ORDER BY 1
 ```
 stockcode|invoice|quantity|price    |description
 :-------:|:-----:|:------:|:-------:|:-------------:
