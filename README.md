@@ -1,12 +1,12 @@
 # Analytics Test - Online Retail
 
-#### [Overview](#overview)
+**[Overview](#overview)**
   - [Technologies used to deploy and share the analysis](#technologies-used-to-deploy-and-share-the-analysis)
-#### [Understanding the Data](#understanding-the-data)
+**[Understanding the Data](#understanding-the-data)**
   - [What are the dimensions of the dataset?](#what-are-the-dimensions-of-the-dataset)
   - [Are there any missing values?](#are-there-any-nullmissing-values)
   - [What attributes and data types it contains?](#what-are-the-attributes-columns-and-which-data-types-they-hold)
-#### [Understanding the Context](#understanding-the-context)
+**[Understanding the Context](#understanding-the-context)**
   - [How many unique values?](#how-many-unique-values)
   - [What time window are we looking at?](#what-time-window-are-we-looking-at)
   - [How many different customers have bought a product from the company?](#how-many-different-customers-have-bought-a-product-from-the-company)
@@ -15,7 +15,7 @@
   - [Which products are most popular?](#which-products-are-most-popular)
   - [Additional notes and observations](#additional-notes-and-observations)
   - [Closing Remarks](#closing-remarks)
-#### [Dashboard Queries](#dashboard-queries)
+**[Dashboard Queries](#dashboard-queries)**
   - [Banner](#banner)
   - [Unique Customers](#unique-customers)
   - [Transactions](#transactions)
