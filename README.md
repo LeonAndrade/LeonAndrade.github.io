@@ -19,6 +19,7 @@
   - [Closing Remarks](#closing-remarks)
 
 **[Dashboard Queries](#dashboard-queries)**
+  - [Take me to the Dashboard!](http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4)
   - [Banner](#banner)
   - [Unique Customers](#unique-customers)
   - [Transactions](#transactions)
@@ -693,6 +694,8 @@ Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Eng
 <br/><br/>
 
 ## Dashboard Queries
+
+**[Take me to the Dashboard!]((http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4))**
 
 The syntax `[[ {{ Filter Name }} ]]` is a template syntax used by metabase to allow for dynamic charts using SQL and custom filters.
 
