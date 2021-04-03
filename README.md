@@ -401,7 +401,7 @@ Max           |168469.60
 
 <br/>
 
-> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can obtain the same results with much less typing!
+> SQL is an amazing lanague and can do most of the work, but it can also get quite verbose for simple things. Using the python library pandas we can obtain the same results with much less typing!
 > ```python
 > import pandas as pd
 > sql = """
