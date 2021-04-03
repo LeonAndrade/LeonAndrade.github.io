@@ -250,7 +250,7 @@ France        |95
 Spain         |41
 Belgium       |29
 
-Most of the customers are from the United Kingdom, followed by a few neighbouring countries, this might suggest that the data is from a british online retailer that sells mostly within Europe.
+Most customers are from the United Kingdom, followed by a few neighbouring countries, this might suggest that the data is from a british online retailer that sells mostly within Europe.
 
 <br/><br/>
 
