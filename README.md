@@ -707,3 +707,120 @@ limit 1
     [[AND {{Country}}]]
 ```
 <br/><br/>
+
+
+#### Transactions
+```sql
+select
+    count(distinct invoice) as Transactions
+from online_retail
+[[where {{Month}}]]
+[[and {{Country}}]]
+```
+<br/><br/>
+
+#### Revenue
+```sql
+select
+    sum(price * quantity)
+from online_retail
+[[where {{Month}}]]
+[[and {{Country}}]]
+```
+<br/><br/>
+
+#### Daily Transactions and Cumulative Revenue
+```sql
+select
+    day,
+    daily_transactions,
+    SUM(revenue) OVER (order by day rows between unbounded preceding and current row) as cumulative_revenue
+from (
+
+    select
+        DATE_TRUNC('d', CAST(invoicedate AS timestamp)) AS day,
+        COUNT(distinct invoice) AS daily_transactions,
+        SUM(price * quantity) AS revenue
+    FROM online_retail
+    WHERE price > 0 and quantity > 0
+    [[AND {{Month}}]]
+    [[AND {{Country}}]]
+
+    GROUP BY 1
+    ORDER BY 1 DESC
+
+) as a
+
+```
+<br/><br/>
+
+#### Most Popular Products
+```sql
+    SELECT
+        stockcode,
+        description,
+        COUNT(distinct invoice) As transactions,
+        sum(quantity)           as quantity,
+        sum(price * quantity)   as revenue
+    FROM online_retail
+    [[WHERE {{Month}}]]
+    [[AND {{Country}}]]
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    LIMIT 10
+```
+<br/><br/>
+
+#### Top 20 Customers
+```sql
+SELECT
+    customer_id,
+    sum(price * quantity)   as revenue,
+    sum(quantity)           as quantity,
+    count(distinct invoice) as transactions
+
+FROM online_retail
+WHERE customer_id is not null
+  AND price > 0 and quantity > 0
+  [[AND {{Month}}]]
+  [[AND {{Country}}]]
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 20
+```
+<br/><br/>
+
+#### Top 10 Products - Transactions
+```sql
+select
+    stockcode,
+    description,
+    count(distinct invoice) as transactions,
+    sum(quantity) as quantity
+FROM online_retail
+WHERE {{Month}}
+[[AND {{Product}}]]
+[[AND {{Country}}]]
+
+GROUP BY 1, 2
+ORDER BY 3 desc
+LIMIT 10
+```
+<br/><br/>
+
+#### Top 10 Products - Quantity
+```sql
+select
+    stockcode,
+    description,
+    count(distinct invoice) as transactions,
+    sum(quantity) as quantity
+
+FROM online_retail
+[[WHERE {{Month}}]]
+[[AND {{Country}}]]
+
+GROUP BY 1, 2
+ORDER BY 4 desc
+LIMIT 10
+```
