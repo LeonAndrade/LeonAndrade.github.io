@@ -419,7 +419,7 @@ Max           |168469.60
 > <img src='img/price-range.png' alt='pandas pd.describe() output' width=180 height=220>
 >
 
-This tell us that **while the average price is just over $500.00, half of the prices are under $300.00 and the most common value for as transaction is as low as $15.00**.<br/>
+This tell us that **while the average transaction is just over $500.00, half are under $300.00 and the most common value for a transaction is as low as $15.00**.<br/>
 
 The standard deviation is roughly 3 times the average, while the maximum price more than $160k, which indicates a large deviation probably due to some large outliers.
 
