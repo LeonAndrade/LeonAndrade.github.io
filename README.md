@@ -414,7 +414,8 @@ Max           |38970.00
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
 > ```
-<img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=220>
+> <img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=220>
+>
 
 This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
 The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
