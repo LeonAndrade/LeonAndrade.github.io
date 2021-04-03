@@ -531,7 +531,7 @@ stockcode|description                       |total_quantity
 
 Lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
 
-<img src='img/popular-products.png' alt='Most Popular Products'>
+<img src='img/popular-products.png' alt='Most Popular Products' height=200>
 
 
 Which products show in both results?
