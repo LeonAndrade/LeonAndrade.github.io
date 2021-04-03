@@ -470,8 +470,7 @@ plt.text(mode + 10, 3600, f'Mode\n{mode:.2f}')
 ```
 <img src='img/transaction-amount.png' alt='transaction amount histogram'>
 
-With a quick glance at this histogram we can say that the mean (average )
-
+With a quick glance at this histogram we can say that the average is 523, but most of the prices are between ~50 and ~300.
 
 <br/><br/>
 
@@ -528,6 +527,12 @@ stockcode|description                       |total_quantity
 22197    |SMALL POPCORN HOLDER              |49616
 21212    |PACK OF 72 RETROSPOT CAKE CASES   |49344
 21212    |PACK OF 72 RETRO SPOT CAKE CASES  |46106
+
+
+Lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
+
+<img src='img/popular-products.png' alt='Most Popular Products'>
+
 
 Which products show in both results?
 
