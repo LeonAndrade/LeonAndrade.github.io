@@ -195,7 +195,7 @@ price      |2807
 quantity   |1057
 country    |43
 
-Let's now see what time window is covered by our data
+#### What time window are we looking at?
 
 ```sql
     SELECT
