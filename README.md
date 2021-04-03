@@ -211,7 +211,7 @@ country    |43
     ORDER BY month DESC
 
 ```
-![Monthly Summary](img/summary_month.png)
+![Monthly Summary](img/time_window_summary.png)
 
 Now we know that this dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought more than **5 thousand unique products** in a **two year window** from december 2009 to december 2011.
 
