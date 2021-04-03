@@ -399,7 +399,7 @@ Max           |38970.00
 
 <br/>
 
-> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can obtain the same result with much less typing!
+> While SQL can do most of the work it can get quite verbose. Using the python library pandas we can obtain the same results with much less typing!
 > ```python
 > import pandas as pd
 > sql = """
@@ -412,7 +412,7 @@ Max           |38970.00
 >    ORDER BY 2 asc
 > """
 >
-> df = pd.read_sql(sql, engine)
+> df = pd.read_sql(sql, db.engine)
 > r = df.describe()
 > r.sort_values('invoice_amount').round(2)
 > ```
@@ -424,7 +424,7 @@ The standard deviation is roughly 5 times the average, while the maximum price i
 
 In other words, when we ask about averages, we are often looking for a *"center of balance"* in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
 
-If we look closely, we can see that while the average is as high as $100.00, half of the prices are bellow $37.35, and the most common value, the mode, is as low as $1.25.
+If we look closely, we can see that while the average is as high as $100.00, half of the prices are below $37.35, and the most common value, the mode, is as low as $1.25.
 
 With this in mind we know the prices are highly concentrated in low prices, with few high price and many low price orders.
 
