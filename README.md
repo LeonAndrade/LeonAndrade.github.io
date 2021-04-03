@@ -703,8 +703,9 @@ from (
 
     SELECT date_trunc('mon', invoicedate) as m
     from online_retail
-    [[where "{{Month"}}]]
-
+    {% raw %}
+    [[where {{Month}}]]
+    {% endraw %}
 ) as a
 limit 1
 ```
