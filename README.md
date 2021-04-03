@@ -190,25 +190,16 @@ Let's now see what time window is covered by our data
 
 ```sql
     SELECT
-        to_char(month, 'Mon/YYYY'),
-        count_invoice,
-        sum_price,
-        unique_customers,
-        sum_quantity
-    FROM (
+        TO_CHAR(DATE_TRUNC('mon', invoicedate),'Mon/YYYY') AS month,
+        COUNT(distinct invoice)                            AS count_invoice,
+        sum(price)                                         AS sum_price,
+        count(distinct customer_id)                        AS unique_customers,
+        sum(quantity)                                      AS sum_quantity
 
-        SELECT
-            DATE_TRUNC('mon', invoicedate) as month,
-            COUNT(distinct invoice) AS count_invoice,
-            sum(price) as sum_price,
-            count(distinct customer_id) as unique_customers,
-            sum(quantity) as sum_quantity
+    FROM online_retail
+    GROUP BY month
+    ORDER BY month DESC
 
-        FROM online_retail
-        GROUP BY month
-        ORDER BY month DESC
-
-    ) AS A
 ```
 ![Monthly Summary](img/online_retail_monthly_summary3.png)
 
