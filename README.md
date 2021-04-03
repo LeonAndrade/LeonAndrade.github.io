@@ -684,3 +684,26 @@ Data can tell us a lot, but data alone is note enought, Data Science/Analytics/E
 
 ## Dashboard Queries
 
+#### Banner
+```sql
+select concat('You are viewing data from : ', to_char(m, 'Month YYYY'))
+from (
+
+    SELECT date_trunc('mon', invoicedate) as m
+    from online_retail
+    [[where {{Month}}]]
+
+) as a
+limit 1
+```
+<br/><br/>
+
+#### Unique Customers
+```sql
+    SELECT COUNT(DISTINCT customer_id)
+    FROM online_retail
+    WHERE customer_id is not null
+    [[AND {{Month}}]]
+    [[AND {{Country}}]]
+```
+<br/><br/>
