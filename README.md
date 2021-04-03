@@ -166,22 +166,22 @@ We want to use our data to answer some basic **_who_**, **_when_**, **_where_**,
 
 #### How many unique values?
 ```sql
-SELECT 'invoice'     AS column_name, COUNT(DISTINCT invoice)     AS n_unique FROM online_retail
+SELECT 'invoice'     AS column_name, COUNT(DISTINCT invoice)     AS unique_values FROM online_retail
 UNION
-SELECT 'stockcode'   AS column_name, COUNT(DISTINCT stockcode)   AS n_unique FROM online_retail
+SELECT 'stockcode'   AS column_name, COUNT(DISTINCT stockcode)   AS unique_values FROM online_retail
 UNION
-SELECT 'description' AS column_name, COUNT(DISTINCT description) AS n_unique FROM online_retail
+SELECT 'description' AS column_name, COUNT(DISTINCT description) AS unique_values FROM online_retail
 UNION
-SELECT 'quantity'    AS column_name, COUNT(DISTINCT quantity)    AS n_unique FROM online_retail
+SELECT 'quantity'    AS column_name, COUNT(DISTINCT quantity)    AS unique_values FROM online_retail
 UNION
-SELECT 'invoicedate' AS column_name, COUNT(DISTINCT invoicedate) AS n_unique FROM online_retail
+SELECT 'invoicedate' AS column_name, COUNT(DISTINCT invoicedate) AS unique_values FROM online_retail
 UNION
-SELECT 'price'       AS column_name, COUNT(DISTINCT price)       AS n_unique FROM online_retail
+SELECT 'price'       AS column_name, COUNT(DISTINCT price)       AS unique_values FROM online_retail
 UNION
-SELECT 'customer_id' AS column_name, COUNT(DISTINCT customer_id) AS n_unique FROM online_retail
+SELECT 'customer_id' AS column_name, COUNT(DISTINCT customer_id) AS unique_values FROM online_retail
 UNION
-SELECT 'country'     AS column_name, COUNT(DISTINCT country)     AS n_unique FROM online_retail
-ORDER BY n_unique DESC
+SELECT 'country'     AS column_name, COUNT(DISTINCT country)     AS unique_values FROM online_retail
+ORDER BY unique_values DESC
 
 ```
 column_name|unique_values
@@ -200,12 +200,13 @@ country    |43
 ```sql
     SELECT
         TO_CHAR(DATE_TRUNC('mon', invoicedate),'Mon/YYYY') AS month,
-        COUNT(distinct invoice)                            AS count_invoice,
-        sum(price)                                         AS sum_price,
-        count(distinct customer_id)                        AS unique_customers,
-        sum(quantity)                                      AS sum_quantity
+        COUNT(distinct invoice)                            AS transactions,
+        count(distinct customer_id)                        AS customers,
+        sum(price * quantity)                              AS revenue,
+        sum(quantity)                                      AS quantity
 
     FROM online_retail
+    WHERE price > 0 and quantity > 0
     GROUP BY month
     ORDER BY month DESC
 
@@ -735,6 +736,7 @@ from online_retail
 select
     sum(price * quantity)
 from online_retail
+where price > 0 and quantity > 0
 [[where {{Month}}]]
 [[and {{Country}}]]
 ```
