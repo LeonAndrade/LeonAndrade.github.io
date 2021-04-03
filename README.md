@@ -426,7 +426,7 @@ In other words, when we ask about averages, we are often looking for a *"center 
 
 If we look closely, we can see that while the average is as high as $100.00, half of the prices are below $37.35, and the most common value, the mode, is as low as $1.25.
 
-With this in mind we know the prices are highly concentrated in low prices, with few high price and many low price orders.
+With this in mind we know there is a high concentration of low prices that decreases fast towards higher prices.
 
 let's plot this with some python:
 
