@@ -231,7 +231,7 @@ customer_id|5942
 
  _(*note that the real number of unique customer may actually be higher, since nearly 1/4 of all customer_id contain null values*)_
 
-We can take this one step further and get the 5 countries with most customers.
+We can take this one step further and get the top 5 countries with most customers.
 
 ```sql
 SELECT
