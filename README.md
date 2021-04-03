@@ -425,7 +425,7 @@ The standard deviation is roughly 3 times the average, while the maximum price m
 
 In other words, **when we ask about averages, we are often looking for a *"center of balance"*** in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
 
-With this in mind we know there is a high concentration of low prices that decreases fast towards higher prices.
+With this in mind we know there is a high concentration of transactions with lower values that decreases fast towards higher values.
 
 let's plot this with some python:
 
