@@ -694,7 +694,7 @@ Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Eng
 
 ## Dashboard Queries
 
-The syntax `[[ {{ Filter Name }} ]]` is a template syntax used by metabase to allow for dinamic charts using SQL and custom filters.
+The syntax `[[ {{ Filter Name }} ]]` is a template syntax used by metabase to allow for dynamic charts using SQL and custom filters.
 
 #### Banner
 ```sql
@@ -703,7 +703,7 @@ from (
 
     SELECT date_trunc('mon', invoicedate) as m
     from online_retail
-    [[where {{Month}}]]
+    [[where "{{Month"}}]]
 
 ) as a
 limit 1
