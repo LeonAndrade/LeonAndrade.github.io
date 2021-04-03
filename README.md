@@ -555,7 +555,7 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        COUNT(invoice) AS transactions
+        COUNT(distinct invoice) AS transactions
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -598,9 +598,9 @@ ORDER BY quantity DESC
 ```
 stockcode|description                       |transactions  |quantity |revenue
 :-------:|:--------------------------------:|:------------:|:-------:|:-----:
-85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5,817         |92,453   |253,541.51
-84879    |ASSORTED COLOUR BIRD ORNAMENT     |2,958         |81,306   |131,413.85
-85099B   |JUMBO BAG RED RETROSPOT           |3,444         |77,671   |146,689.00
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5,495         |92,453   |253,541.51
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2,827         |81,306   |131,413.85
+85099B   |JUMBO BAG RED RETROSPOT           |3,320         |77,671   |146,689.00
 
 Who would guess heart hanging light holders would be so popular?!
 
