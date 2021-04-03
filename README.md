@@ -716,8 +716,10 @@ limit 1
     SELECT COUNT(DISTINCT customer_id)
     FROM online_retail
     WHERE customer_id is not null
+    {% raw %}
     [[AND {{Month}}]]
     [[AND {{Country}}]]
+    {% endraw %}
 ```
 <br/><br/>
 
@@ -727,8 +729,10 @@ limit 1
 select
     count(distinct invoice) as Transactions
 from online_retail
+{% raw %}
 [[where {{Month}}]]
 [[and {{Country}}]]
+{% endraw %}
 ```
 <br/><br/>
 
@@ -738,8 +742,10 @@ select
     sum(price * quantity)
 from online_retail
 where price > 0 and quantity > 0
+{% raw %}
 [[where {{Month}}]]
 [[and {{Country}}]]
+{% endraw %}
 ```
 <br/><br/>
 
@@ -750,16 +756,16 @@ select
     daily_transactions,
     SUM(revenue) OVER (order by day rows between unbounded preceding and current row) as cumulative_revenue
 from (
-
     select
         DATE_TRUNC('d', CAST(invoicedate AS timestamp)) AS day,
         COUNT(distinct invoice) AS daily_transactions,
         SUM(price * quantity) AS revenue
     FROM online_retail
     WHERE price > 0 and quantity > 0
+    {% raw %}
     [[AND {{Month}}]]
     [[AND {{Country}}]]
-
+    {% endraw %}
     GROUP BY 1
     ORDER BY 1 DESC
 
@@ -777,8 +783,10 @@ from (
         sum(quantity)           as quantity,
         sum(price * quantity)   as revenue
     FROM online_retail
+    {% raw %}
     [[WHERE {{Month}}]]
     [[AND {{Country}}]]
+    {% endraw %}
     GROUP BY 1, 2
     ORDER BY 3 DESC
     LIMIT 10
@@ -792,12 +800,13 @@ SELECT
     sum(price * quantity)   as revenue,
     sum(quantity)           as quantity,
     count(distinct invoice) as transactions
-
 FROM online_retail
 WHERE customer_id is not null
   AND price > 0 and quantity > 0
+  {% raw %}
   [[AND {{Month}}]]
   [[AND {{Country}}]]
+  {% endraw %}
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 20
@@ -812,10 +821,11 @@ select
     count(distinct invoice) as transactions,
     sum(quantity) as quantity
 FROM online_retail
+{% raw %}
 WHERE {{Month}}
 [[AND {{Product}}]]
 [[AND {{Country}}]]
-
+{% endraw %}
 GROUP BY 1, 2
 ORDER BY 3 desc
 LIMIT 10
@@ -831,9 +841,10 @@ select
     sum(quantity) as quantity
 
 FROM online_retail
+{% raw %}
 [[WHERE {{Month}}]]
 [[AND {{Country}}]]
-
+{% endraw %}
 GROUP BY 1, 2
 ORDER BY 4 desc
 LIMIT 10
