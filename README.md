@@ -256,7 +256,7 @@ Most of the customers are from UK, followed by a few neighbouring country, this 
 
 ```sql
 SELECT
-	cast(date_trunc('d',invoicedate) AS DATE) AS day,
+    cast(date_trunc('d',invoicedate) AS DATE) AS day,
     COUNT(invoice) AS transaction_count
 FROM online_retail
 GROUP BY day
@@ -287,7 +287,7 @@ day        |transaction_count
 2010-12-03 |4404
 2011-11-29 |4313
 
-It seems december 2010 was a great month, with 7 out of the 10 days with most transactions!
+Looks like december 2010 was a great month, with 7 out of the 10 days with most transactions!
 Just for a sanity check, let's see if this is just a daily trend by taking the top transaction count on a weekly basis:
 
 ```sql
@@ -312,13 +312,13 @@ week       |transaction_count
 2010-11-08 |18476
 2011-12-05 |17707
 
-It seems even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this we can see that most sales occur by the end of the year, likely because of the hollidays.
+Even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this we can see that most sales occured by the end of the year, likely because of the hollidays.
 
 <br/><br/>
 
 #### What is the average value of a transaction?
 
-By transactions we are assuming the sum of prices for a single invoice.<br/>
+By transactions we are assuming the sum of prices time quantity ordered for any single invoice.<br/>
 _(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
 The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
@@ -580,6 +580,40 @@ stockcode|description                       |unique_customers|unique_countries
 22138    |BAKING SET 9 PIECE RETROSPOT      |1152            |31
 84879    |ASSORTED COLOUR BIRD ORNAMENT     |1012            |19
 22086    |PAPER CHAIN KIT 50'S CHRISTMAS    |896             |12
+
+<br/><br/>
+
+#### Additional notes and observations
+
+**Negative quantities and prices**
+
+While there is just one distinct stockcode and 5 rows where the price is negative products, there are more than 4,000 distinct stockcode values where the quantity for that row is negative.
+
+```sql
+select
+    distinct stockcode,
+    invoice,
+    quantity,
+    price,
+    description
+from online_retail
+where price < 0
+order by 1
+```
+stockcode|invoice|quantity|price    |description
+:-------:|:-----:|:------:|:-------:|:-------------:
+B        |A506401|1       |-53594.36|Adjust bad debt
+B        |A516228|1       |-44031.79|Adjust bad debt
+B        |A528059|1       |-38925.87|Adjust bad debt
+B        |A563186|1       |-11062.06|Adjust bad debt
+B        |A563187|1       |-11062.06|Adjust bad debt
+
+
+I noticed most of the invoices starting with C hold negative quantities except for 1 row, but there are plenty other invoices with negative quantities, at first glance i couldn't see any specific identifier for these negative quantities. Perhaps it has to do with cancelled orders, or returning products.
+
+The best way would be to understand where these stockcodes come from and how they are inputed to the system, but while that may not always be possible, a deeper exploration crossing prices, quantities and descriptions could expose some underlying relationships in the data.
+
+**invoice**
 
 <br/><br/>
 
