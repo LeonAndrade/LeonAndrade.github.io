@@ -587,7 +587,7 @@ stockcode|description                       |unique_customers|unique_countries
 
 **Negative quantities and prices**
 
-While there is just one distinct stockcode and 5 rows where the price is negative products, there are more than 4,000 distinct stockcode values where the quantity for that row is negative.
+While there is just one distinct stockcode and 5 rows where the price is negative, there are more than 4,000 distinct stockcode values where the quantity for that row is negative.
 
 ```sql
 select
@@ -609,7 +609,7 @@ B        |A563186|1       |-11062.06|Adjust bad debt
 B        |A563187|1       |-11062.06|Adjust bad debt
 
 
-I noticed most of the invoices starting with C hold negative quantities except for 1 row, but there are plenty other invoices with negative quantities, at first glance i couldn't see any specific identifier for these negative quantities. Perhaps it has to do with cancelled orders, or returning products.
+I've noticed most of the invoices starting with C hold negative quantities except for 1 row, but there are plenty other invoices with negative quantities, at first glance i couldn't see any specific identifier for these negative quantities. Perhaps it has to do with cancelled orders, or returning products.
 
 The best way would be to understand where these stockcodes come from and how they are inputed to the system, but while that may not always be possible, a deeper exploration crossing prices, quantities and descriptions could expose some underlying relationships in the data.
 
