@@ -389,19 +389,13 @@ ORDER BY value ASC
 measure       |value
 :------------:|:-------:
 Min	          |0.01
+Mode          |1.25
 First Quartile|11.30
 Median        |37.35
 Third Quartile|83.47
 Avg	          |105.88
 StdDev        |532.73
 Max           |38970.00
-
-This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
-The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
-
-In other words, when we ask about averages, we are often looking for a *"center of balance"* in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
-
-If we look closely, we can see that half of the prices are bellow $37.35, which suggests that the mode
 
 > while SQL can do most of the work, the python library Pandas can do it with less typing:
 > ```python
@@ -421,6 +415,46 @@ If we look closely, we can see that half of the prices are bellow $37.35, which 
 > r.sort_values('invoice_amount').round(2)
 > ```
 <img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=220>
+
+This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
+The standard deviation is roughly 5 times the average, while the maximum price is nearly at $40,000.00, which indicates a large deviation probably caused by some large outliers.
+
+In other words, when we ask about averages, we are often looking for a *"center of balance"* in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
+
+If we look closely, we can see that while the average is as high as $100.00, half of the prices are bellow $37.35, and the most common value, the mode, is as low as $1.25.
+
+With this in mind we know the prices are highly concentrated in low prices, with few high price and many low price orders.
+
+let's plot this with some python:
+
+```python
+import pandas as pd
+
+sql = """
+SELECT
+    invoice,
+    sum(price) AS sum_price
+FROM online_retail
+WHERE price > 0
+GROUP BY 1
+ORDER BY 2 asc
+"""
+
+# return the query resultas as a pandas DataFrame
+df = pd.read_sql(sql, db.engine)
+
+# since most of the prices are under $100, let's filter out any price above 500
+df = df[df['sum_price'] < 500]
+
+# plotting the frequency histogram
+plt.figure(figsize=(10,5))
+plt.ylabel('Frequency')
+plt.xlabel('Unique Invoice Price')
+plt.hist(x=df['sum_price'], bins=25)
+```
+<img src='img/price_frequency.png' alt='price histogram')
+
+
 
 <br/><br/>
 
