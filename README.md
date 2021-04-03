@@ -328,9 +328,9 @@ with a as (
 
     SELECT
         invoice,
-        sum(price)                             AS sum_price
+        sum(price * quantity)                          AS transaction_value
     FROM online_retail
-    WHERE price > 0
+    WHERE price > 0 and quantity > 0
     GROUP BY 1
     ORDER BY 2 asc
 
@@ -338,64 +338,64 @@ with a as (
 
     SELECT
         *,
-        ntile(4) OVER (ORDER BY sum_price ASC) AS quartile
+        ntile(4) OVER (ORDER BY transaction_value ASC) AS quartile
     FROM a
 )
 
 SELECT
-    'First Quartile'                           AS measure,
-    max(sum_price)                             AS value
+    'First Quartile'                                   AS measure,
+    max(transaction_value)                             AS value
     from b
     where quartile = 1
 UNION
 SELECT
-    'Mode'                                     AS measure,
-    mode() WITHIN GROUP (ORDER BY sum_price)   AS value
+    'Mode'                                             AS measure,
+    mode() WITHIN GROUP (ORDER BY transaction_value)   AS value
    FROM b
 UNION
 SELECT
-    'Median'                                   AS measure,
-    max(sum_price)                             AS value
+    'Median'                                           AS measure,
+    max(transaction_value)                             AS value
     FROM b
     WHERE quartile = 2
 UNION
 SELECT
-    'Third Quartile'                           AS measure,
-    max(sum_price)                             AS value
+    'Third Quartile'                                   AS measure,
+    max(transaction_value)                             AS value
     FROM b
     WHERE quartile = 3
 UNION
 SELECT
-    'Min'                                      AS measure,
-    round(min(sum_price)::numeric,2)           AS value
+    'Min'                                              AS measure,
+    round(min(transaction_value)::numeric,2)           AS value
     FROM b
 UNION
 SELECT
-    'Avg'                                      AS measure,
-    round(avg(sum_price)::numeric,2)           AS value
+    'Avg'                                              AS measure,
+    round(avg(transaction_value)::numeric,2)           AS value
     FROM b
 UNION
 SELECT
-    'StdDev'                                   AS measure,
-    round(stddev_samp(sum_price)::numeric,2)   AS value
+    'StdDev'                                           AS measure,
+    round(stddev_samp(transaction_value)::numeric,2)   AS value
     FROM b
 UNION
 SELECT
-    'Max'                                      AS measure,
-    round(max(sum_price)::numeric,2)           AS value
+    'Max'                                              AS measure,
+    round(max(transaction_value)::numeric,2)           AS value
     FROM b
 ORDER BY value ASC
 ```
 measure       |value
 :------------:|:-------:
-Min	          |0.01
-Mode          |1.25
-First Quartile|11.30
-Median        |37.35
-Third Quartile|83.47
-Avg	          |105.88
-StdDev        |532.73
-Max           |38970.00
+Min           |0.19
+Mode          |15.00
+First Quartile|151.97
+Median        |304.32
+Third Quartile|504.90
+Avg           |523.30
+StdDev        |1517.35
+Max           |168469.60
 
 <br/>
 
@@ -405,18 +405,18 @@ Max           |38970.00
 > sql = """
 >   SELECT
 >        distinct invoice,
->        sum(price) as invoice_amount
+>        sum(price * quantity) as transaction_amount
 >    FROM online_retail
->    where price > 0
+>    where price > 0 AND quantity > 0
 >    GROUP BY 1
 >    ORDER BY 2 asc
 > """
 >
 > df = pd.read_sql(sql, db.engine)
 > r = df.describe()
-> r.sort_values('invoice_amount').round(2)
+> r.sort_values('transaction_amount').round(2)
 > ```
-> <img src='img/pandas_describe.png' alt='pandas pd.describe() output' width=180 height=220>
+> <img src='img/price-range.png' alt='pandas pd.describe() output' width=180 height=220>
 >
 
 This tell us that **while the average price is just over $100.00, 75% of the prices are under $83.00**.<br/>
