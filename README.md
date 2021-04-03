@@ -545,7 +545,7 @@ POST     |POSTAGE                            |112341.00
 
 Now, lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
 
-<img src='img/popular_products.png' alt='Most Popular Products'>
+<img src='img/popular--products.png' alt='Most Popular Products'>
 
 Which products show in all three results?
 
