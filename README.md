@@ -547,7 +547,9 @@ Now, lets try and plot all this information combined to see the performances for
 
 <figure>
     <img src='img/popular--products.png' alt='Most Popular Products'>
-    <figcaption>[Click Here](http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6) to see this chart on Metabase.</figcaption>
+    <figcaption>
+        <a href="http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6">Click Here</a> to see this chart on Metabase.
+    </figcaption>
 </figure>
 
 Which products show in all three results?
