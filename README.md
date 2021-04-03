@@ -693,6 +693,8 @@ Data can tell us a lot, but data alone is note enought, Data Science/Analytics/E
 
 ## Dashboard Queries
 
+The syntax `[[ {{ Filter Name }} ]]` is a template syntax used by metabase to allow for dinamic charts using SQL and custom filters.
+
 #### Banner
 ```sql
 select concat('You are viewing data from : ', to_char(m, 'Month YYYY'))
