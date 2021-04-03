@@ -320,10 +320,10 @@ Seems like november has been the best month for sales on both years.
 
 #### What is the average value of a transaction?
 
-We will consideri the **transaction value** as the **sum of prices times the quantity ordered** for any single invoice.<br/>
+We will consider the **transaction value** as the **sum of prices times the quantity ordered** for any single invoice.<br/>
 _(obs: there are a few prices with negative value and a description of "adjusted bad debit", so we are going to disconsider all negative prices)_
 
-The average reduces a series of numbers into a single number, while it's useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the price range.
+The average reduces a series of numbers into a single number, while useful, alone it can lead to misinterpretations. So as to avoid this common pitfall, let's see how are the transaction values distributed along the it's range.
 
 ```sql
 with a as (
@@ -421,13 +421,13 @@ Max           |168469.60
 > <img src='img/price-range.png' alt='pandas pd.describe() output' width=180 height=220>
 >
 
-This tell us that **while the average transaction is just over $500.00, half are under $300.00 and the most common value for a transaction is as low as $15.00**.<br/>
+This tell us that **while the average transaction is just over $500.00, half of all transactions are under $300.00 and the most common value for a transaction is as low as $15.00**.<br/>
 
-The standard deviation is roughly 3 times the average, while the maximum price more than $160k, which indicates a large deviation probably due to some large outliers.
+The standard deviation is roughly 3 times the average, and the maximum price more than $160k, which indicates a large deviation probably due to some large outliers.
 
 In other words, **when we ask about averages, we are often looking for a *"center of balance"*** in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
 
-With this in mind we know there is a high concentration of transactions with lower values that decreases fast towards higher values.
+With this in mind we know there is a higher concentration of transactions with lower values that decreases fast towards higher values.
 
 let's plot this with some python:
 
@@ -472,7 +472,7 @@ plt.text(mode + 10, 3600, f'Mode\n{mode:.2f}')
 ```
 <img src='img/transaction-amount.png' alt='transaction amount histogram'>
 
-With a quick glance at this histogram we can say that the average is 523, but most of the prices are between ~50 and ~300.
+With a quick glance at this histogram we can say that the average is 523, but most transactions fall between ~50 and ~300.
 
 <br/><br/>
 
@@ -504,6 +504,7 @@ stockcode|description                       |transactions
 21931    |JUMBO STORAGE BAG SUKI            |2364
 22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2215
 22469    |HEART OF WICKER SMALL             |2174
+<br/><br/>
 
 - **By total quantity sold**
 
@@ -529,6 +530,7 @@ stockcode|description                       |total_quantity
 22197    |SMALL POPCORN HOLDER              |49616
 21212    |PACK OF 72 RETROSPOT CAKE CASES   |49344
 21212    |PACK OF 72 RETRO SPOT CAKE CASES  |46106
+<br/><br/>
 
 - **By revenue generated**
 ```sql
@@ -559,7 +561,9 @@ Now, lets try and plot all this information combined to see the performances for
 <figure>
     <img src='img/popular--products.png' alt='Most Popular Products'>
     <figcaption>
-        <a href="http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6">Click Here</a> to see this chart on Metabase.
+        <a href="http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6">
+        <b>Click Here</b>
+        </a> to see this chart on Metabase.
     </figcaption>
 </figure>
 
