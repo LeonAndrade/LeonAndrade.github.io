@@ -257,62 +257,62 @@ Most of the customers are from UK, followed by a few neighbouring countries, thi
 ```sql
 SELECT
     CAST(date_trunc('d',invoicedate) AS DATE) AS day,
-    COUNT(invoice) AS transaction_count
+    COUNT(distinct invoice) AS daily_transactions
 FROM online_retail
 GROUP BY day
-ORDER BY transaction_count DESC
+ORDER BY daily_transactions DESC
 LIMIT 1
 ```
 day        |transaction_count
 :---------:|:---------------:
-2010-12-06|7756
+2010-11-04 |219
 
-The day with most transactions is the 6th of december of the year 2010.<br/>
+The day with most transaction was november the 4th, 2010 with 219 unique transactions.<br/>
 Let's se the top 10, it's the same query so we just have to increase the limit of returning rows.
 
 ```sql
 ...
 LIMIT 10
 ```
-day        |transaction_count
-:---------:|:---------------:
-2010-12-06 |7756
-2010-12-01 |6216
-2010-12-07 |5926
-2010-12-09 |5782
-2010-12-05 |5450
-2011-12-05 |5331
-2010-12-08 |5294
-2011-12-08 |4940
-2010-12-03 |4404
-2011-11-29 |4313
+day           |daily_transactions
+:------------:|:---------------:
+0	2010-11-04|219
+1	2011-10-06|218
+2	2010-10-05|206
+3	2009-12-22|203
+4	2010-11-11|192
+5	2010-11-24|188
+6	2011-11-10|184
+7	2010-12-09|183
+8	2010-11-25|181
+9	2010-05-11|180
 
-Looks like december 2010 was a great month, with 7 out of the 10 days with most transactions!
-Just for a sanity check, let's see if this is just a daily trend by taking the top transaction count on a weekly basis:
+Looks like the peak in transaction volume happens by the end of the year, likely due to holliday season.
+What about on a weekly basis?
 
 ```sql
 SELECT
-    CAST(date_trunc('week', invoicedate) AS DATE) AS week,
-    COUNT(invoice) AS transaction_count
+    CAST(date_trunc('week',invoicedate) AS DATE) AS week,
+    COUNT(distinct invoice) AS weekly_transactions
 FROM online_retail
 GROUP BY week
-ORDER BY transaction_count DESC
+ORDER BY weekly_transactions DESC
 LIMIT 10
 ```
-week       |transaction_count
-:---------:|:---------------:
-2010-12-06 |28967
-2010-11-29 |26655
-2011-11-14 |21112
-2011-11-21 |19950
-2011-11-07 |19267
-2010-11-22 |19111
-2011-11-28 |18916
-2010-11-15 |18763
-2010-11-08 |18476
-2011-12-05 |17707
+week      |weekly_transactions
+:--------:|:-----------------:
+2011-11-14|894
+2010-11-01|891
+2010-11-22|854
+2010-11-08|834
+2011-11-28|824
+2010-11-29|808
+2010-11-15|795
+2011-11-07|781
+2011-11-21|754
+2010-10-18|750
 
-Even when grouping by weeks, december 2010 had a great week of sales. Also by looking at this we can see that most sales occured by the end of the year, likely because of the hollidays.
+Seems like november is the best month for sales.
 
 <br/><br/>
 
