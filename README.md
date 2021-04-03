@@ -696,8 +696,8 @@ Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Eng
 ## Dashboard Queries
 
 <a href='http://dash-analytics-test.herokuapp.com/public/dashboard/a5fda97e-9061-499e-9ad3-36559a67e8d4'>
-<img src='img/metabase.png' alt='metabase logo'>
-**Take me to the Dashboard!**
+<img src='img/metabase.png' alt='metabase logo' height=50 width=50>
+<b>Take me to the Dashboard!**</b>
 <a>
 
 
