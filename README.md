@@ -477,7 +477,8 @@ With a quick glance at this histogram we can say that the average is 523, but mo
 #### Which products are most popular?
 
 What are we going to consider as popular?<br/>
-We can see the top 10 products by number of distinct invoices, which product is being ordered more times?
+
+- **By number of transactions:**
 
 ```sql
 SELECT
@@ -502,8 +503,7 @@ stockcode|description                       |transactions
 22469    |HEART OF WICKER SMALL             |2319
 22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2297
 
-Another way to look at it, is to measure by total quantity sold.<br/>
-Which products are bought in the largest quantities?
+- **By total quantity sold**
 
 ```sql
 SELECT
@@ -528,11 +528,33 @@ stockcode|description                       |total_quantity
 21212    |PACK OF 72 RETROSPOT CAKE CASES   |49344
 21212    |PACK OF 72 RETRO SPOT CAKE CASES  |46106
 
+- **By revenue generated**
+```sql
+SELECT
+    stockcode,
+    description,
+    round(sum(price * quantity)::numeric,2) AS revenue
+FROM online_retail
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 10
+```
+stockcode|description                        |revenue
+:-------:|:---------------------------------:|:-------:
+22423    |REGENCY CAKESTAND 3 TIER           |327813.65
+DOT      |DOTCOM POSTAGE                     |322647.47
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER |253541.51
+47566    |PARTY BUNTING                      |147948.50
+85099B   |JUMBO BAG RED RETROSPOT            |46689.00
+84879    |ASSORTED COLOUR BIRD ORNAMENT      |131413.85
+22086    |PAPER CHAIN KIT 50'S CHRISTMAS     |121662.14
+POST     |POSTAGE                            |112341.00
+79321    |CHILLI LIGHTS                      |84854.16
+84347    |ROTATING SILVER ANGELS T-LIGHT HLDR|73814.72
 
-Lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
+Now, lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice.
 
 <img src='img/popular-products.png' alt='Most Popular Products'>
-
 
 Which products show in both results?
 
@@ -553,7 +575,18 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        sum(quantity) AS quantity
+        sum(quantity) AS total_quantity
+    FROM online_retail
+    GROUP BY 1, 2
+    ORDER BY 3 DESC
+    LIMIT 10
+
+), c as (
+
+    SELECT
+        stockcode,
+        description,
+        round(sum(price * quantity)::numeric,2) AS revenue
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -565,15 +598,18 @@ SELECT
 	a.stockcode,
 	a.description,
 	a.transactions,
-	b.quantity
-FROM a INNER JOIN b ON a.stockcode = b.stockcode
-ORDER BY quantity DESC
+	b.total_quantity,
+	c.revenue
+FROM a
+    INNER JOIN b ON a.stockcode = b.stockcode
+    INNER JOIN c ON a.stockcode = c.stockcode
+ORDER BY total_quantity desc
 ```
-stockcode|description                       |transactions |quantity
-:-------:|:--------------------------------:|:-----------:|:------:
-85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5817         |92453
-84879    |ASSORTED COLOUR BIRD ORNAMENT     |2958         |81306
-85099B   |JUMBO BAG RED RETROSPOT           |3444         |77671
+stockcode|description                       |transactions  |total_quantity |revenue
+:-------:|:--------------------------------:|:------------:|:-------------:|:-----:
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5,817         |92,453         |253,541.51
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2,958         |81,306         |131,413.85
+85099B   |JUMBO BAG RED RETROSPOT           |3,444         |77,671         |146,689.00
 
 Who would guess heart hanging light holders would be so popular?!
 
