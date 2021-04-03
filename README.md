@@ -274,18 +274,18 @@ Let's se the top 10, it's the same query so we just have to increase the limit o
 ...
 LIMIT 10
 ```
-day           |daily_transactions
-:------------:|:---------------:
-0	2010-11-04|219
-1	2011-10-06|218
-2	2010-10-05|206
-3	2009-12-22|203
-4	2010-11-11|192
-5	2010-11-24|188
-6	2011-11-10|184
-7	2010-12-09|183
-8	2010-11-25|181
-9	2010-05-11|180
+day       |daily_transactions
+:--------:|:---------------:
+2010-11-04|219
+2011-10-06|218
+2010-10-05|206
+2009-12-22|203
+2010-11-11|192
+2010-11-24|188
+2011-11-10|184
+2010-12-09|183
+2010-11-25|181
+2010-05-11|180
 
 Looks like the peak in transaction volume happens by the end of the year, likely due to holliday season.
 What about on a weekly basis?
