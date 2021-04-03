@@ -556,7 +556,7 @@ Now, lets try and plot all this information combined to see the performances for
 
 <img src='img/popular-products.png' alt='Most Popular Products'>
 
-Which products show in both results?
+Which products show in all three results?
 
 ```sql
 WITH a as (
@@ -575,7 +575,7 @@ WITH a as (
     SELECT
         stockcode,
         description,
-        sum(quantity) AS total_quantity
+        sum(quantity) AS quantity
     FROM online_retail
     GROUP BY 1, 2
     ORDER BY 3 DESC
@@ -595,21 +595,21 @@ WITH a as (
 )
 
 SELECT
-	a.stockcode,
-	a.description,
-	a.transactions,
-	b.total_quantity,
-	c.revenue
+    a.stockcode,
+    a.description,
+    a.transactions,
+    b.quantity,
+    c.revenue
 FROM a
     INNER JOIN b ON a.stockcode = b.stockcode
     INNER JOIN c ON a.stockcode = c.stockcode
-ORDER BY total_quantity desc
+ORDER BY quantity DESC
 ```
-stockcode|description                       |transactions  |total_quantity |revenue
-:-------:|:--------------------------------:|:------------:|:-------------:|:-----:
-85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5,817         |92,453         |253,541.51
-84879    |ASSORTED COLOUR BIRD ORNAMENT     |2,958         |81,306         |131,413.85
-85099B   |JUMBO BAG RED RETROSPOT           |3,444         |77,671         |146,689.00
+stockcode|description                       |transactions  |quantity |revenue
+:-------:|:--------------------------------:|:------------:|:-------:|:-----:
+85123A   |WHITE HANGING HEART T-LIGHT HOLDER|5,817         |92,453   |253,541.51
+84879    |ASSORTED COLOUR BIRD ORNAMENT     |2,958         |81,306   |131,413.85
+85099B   |JUMBO BAG RED RETROSPOT           |3,444         |77,671   |146,689.00
 
 Who would guess heart hanging light holders would be so popular?!
 
