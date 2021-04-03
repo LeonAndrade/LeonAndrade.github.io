@@ -452,9 +452,7 @@ plt.ylabel('Frequency')
 plt.xlabel('Unique Invoice Price')
 plt.hist(x=df['sum_price'], bins=25)
 ```
-<img src='img/price_frequency.png' alt='price histogram')
-
-
+<img src='img/price-frequency.png' alt='price histogram')
 
 <br/><br/>
 
