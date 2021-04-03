@@ -201,7 +201,7 @@ Let's now see what time window is covered by our data
     ORDER BY month DESC
 
 ```
-![Monthly Summary](img/online_retail_monthly_summary3.png)
+![Monthly Summary](img/summary_month.png)
 
 Now we know that this dataset contains data from **53,628 invoices**, made by approximately **5942 different customers** from **43 countries** who bought more than **5 thousand unique products** in a **two year window** from december 2009 to december 2011.
 
@@ -554,7 +554,7 @@ Now, lets try and plot all this information combined to see the performances for
 
 <br/><br/>
 
-Which products show in all three results?
+- **Which products show in all three results?**
 
 ```sql
 WITH a as (
@@ -667,8 +667,6 @@ B        |A563187|1       |-11062.06|Adjust bad debt
 I've noticed most of the invoices starting with C hold negative quantities except for 1 row, but there are plenty other invoices with negative quantities, at first glance i couldn't see any specific identifier for these negative quantities. Perhaps it has to do with cancelled orders, or returning products.
 
 The best way would be to understand where these stockcodes come from and how they are inputed to the system, but while that may not always be possible, a deeper exploration crossing prices, quantities and descriptions could expose some underlying relationships in the data.
-
-**invoice**
 
 <br/><br/>
 
