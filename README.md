@@ -200,12 +200,12 @@ country    |43
     SELECT
         TO_CHAR(DATE_TRUNC('mon', invoicedate),'Mon/YYYY') AS month,
         COUNT(distinct invoice)                            AS transactions,
-        count(distinct customer_id)                        AS customers,
-        sum(price * quantity)                              AS revenue,
-        sum(quantity)                                      AS quantity
+        COUNT(distinct customer_id)                        AS customers,
+        SUM(price * quantity)                              AS revenue,
+        SUM(quantity)                                      AS quantity
 
     FROM online_retail
-    WHERE price > 0 and quantity > 0
+    WHERE price > 0 AND quantity > 0
     GROUP BY month
     ORDER BY month DESC
 
