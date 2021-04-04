@@ -457,7 +457,7 @@ mode = df.mode()['transaction'].iloc[0]
 # plotting the frequency histogram
 plt.figure(figsize=(10,5))
 
-# limit x and y axis to improve readability, high-end prices were cut of from the view.
+# limit x and y axis to improve readability, high-end prices were cut off from the view.
 plt.ylim(0,4000)
 plt.xlim(-50,2000)
 
