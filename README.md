@@ -431,7 +431,7 @@ let's make this more visual, and plot with the help of some python libraries:
 
 ```python
 import pandas as pd
-from  matplotlib import pyplot as plt
+from matplotlib import pyplot as plt
 
 sql = """
 
@@ -444,8 +444,12 @@ sql = """
     ORDER BY 2 asc
 
 """
+# the engine param is the actual database api connection.
+# I've used the sqlalchemy.create_engine() method for the engine object
+# read more at: https://docs.sqlalchemy.org/en/14/core/engines.html
 df = pd.read_sql(sql, engine)
 
+# getting the values for our three mains measures of central tendency
 mean = df.mean()['transaction']
 median = df.median()['transaction']
 mode = df.mode()['transaction'].iloc[0]
@@ -453,13 +457,18 @@ mode = df.mode()['transaction'].iloc[0]
 # plotting the frequency histogram
 plt.figure(figsize=(10,5))
 
+# limit x and y axis to improve readability, high-end prices were cut of from the view.
 plt.ylim(0,4000)
 plt.xlim(-50,2000)
 
+# add labels to each axis
 plt.ylabel('Frequency')
 plt.xlabel('Transaction Amount')
+
+# the actual histogram method
 plt.hist(x=df['transaction'], bins=5000)
 
+# plot the lines with central tendencies
 plt.axvline(mean, color='r', linestyle='dashed', linewidth=1)
 plt.text(mean + 10, 3600, f'Mean\n{mean:.2f}')
 
