@@ -729,6 +729,7 @@ FROM (
 ) AS a
 LIMIT 1
 ```
+<img src='img/banner_metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Unique Customers
@@ -741,6 +742,7 @@ LIMIT 1
     [[AND {{Country}}]]
     {% endraw %}
 ```
+<img src='img/customers_metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 
@@ -754,6 +756,7 @@ FROM online_retail
 [[AND {{Country}}]]
 {% endraw %}
 ```
+<img src='img/transactions_metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Revenue
@@ -767,6 +770,7 @@ WHERE price > 0 AND quantity > 0
 [[AND {{Country}}]]
 {% endraw %}
 ```
+<img src='img/revenue_metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Daily Transactions and Cumulative Revenue
@@ -791,8 +795,8 @@ FROM (
     ORDER BY 1 DESC
 
 ) as a
-
 ```
+<img src='img/daily-revenue.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Most Popular Products
@@ -812,6 +816,7 @@ GROUP BY 1, 2
 ORDER BY 3 DESC
 LIMIT 10
 ```
+<img src='img/top-selling-products.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Top 20 Customers
@@ -832,6 +837,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 20
 ```
+<img src='img/top20-customers-metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Top 10 Products - Transactions
@@ -851,6 +857,7 @@ GROUP BY 1, 2
 ORDER BY 3 desc
 LIMIT 10
 ```
+<img src='img/top10-products-transactions.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Top 10 Products - Quantity
@@ -870,3 +877,5 @@ GROUP BY 1, 2
 ORDER BY 4 desc
 LIMIT 10
 ```
+<img src='img/top10-products-quantity.png' alt='metabase logo' height=120 width=230><br/>
+<br/><br/>
