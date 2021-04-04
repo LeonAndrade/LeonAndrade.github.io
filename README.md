@@ -729,7 +729,7 @@ FROM (
 ) AS a
 LIMIT 1
 ```
-<img src='img/banner_metabase.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/banner_metabase.png' alt='metabase logo' height=120 width=450><br/>
 <br/><br/>
 
 #### Unique Customers
