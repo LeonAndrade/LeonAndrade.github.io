@@ -716,6 +716,8 @@ Data can tell us a lot, but data alone is not enough, Data Science/Analytics/Eng
 
 The syntax `{% raw %}[[ {{ Filter Name }} ]]{% endraw %}` is a template syntax used by metabase to allow for dynamic charts using SQL and custom filters.
 
+All the queries in the dashboard contain dynamic filters for month/year and country. The images under each query here show the results for November 2010, but you can input any month from dec/2009 to dec/2011 to see the compiled data for that month.
+
 #### Banner
 ```sql
 SELECT concat('You are viewing data from : ', to_char(mon, 'Month YYYY'))
@@ -756,7 +758,7 @@ FROM online_retail
 [[AND {{Country}}]]
 {% endraw %}
 ```
-<img src='img/transactions_metabase.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/transactions_metabase.png' alt='metabase logo' height=520 width=230><br/>
 <br/><br/>
 
 #### Revenue
