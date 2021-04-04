@@ -569,12 +569,10 @@ POST     |POSTAGE                            |112341.00
 Now, lets try and plot all this information combined to see the performances for the top 10 products, this time with Metabase, our BI tool of choice
 
 <figure>
-    <img src='img/popular--products.png' alt='Most Popular Products'>
-    <figcaption>
-        <a href="http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6">
+    <a href="http://dash-analytics-test.herokuapp.com/public/question/87246b8a-2455-411a-916b-3dc5c0fa37f6">
+        <img src='img/popular--products.png' alt='Most Popular Products'>
         <b>Click Here</b>
-        </a> to see this chart on Metabase.
-    </figcaption>
+    </a> to see this chart on Metabase.
 </figure>
 
 <br/><br/>
