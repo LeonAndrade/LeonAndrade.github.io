@@ -772,7 +772,7 @@ WHERE price > 0 AND quantity > 0
 [[AND {{Country}}]]
 {% endraw %}
 ```
-<img src='img/revenue_metabase.png' alt='metabase logo' height=120 width=530><br/>
+<img src='img/revenue_metabase.png' alt='metabase logo' height=120 width=370><br/>
 <br/><br/>
 
 #### Daily Transactions and Cumulative Revenue
