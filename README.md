@@ -758,7 +758,7 @@ FROM online_retail
 [[AND {{Country}}]]
 {% endraw %}
 ```
-<img src='img/transactions_metabase.png' alt='metabase logo' height=520 width=230><br/>
+<img src='img/transactions_metabase.png' alt='metabase logo' height=120 width=230><br/>
 <br/><br/>
 
 #### Revenue
@@ -772,7 +772,7 @@ WHERE price > 0 AND quantity > 0
 [[AND {{Country}}]]
 {% endraw %}
 ```
-<img src='img/revenue_metabase.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/revenue_metabase.png' alt='metabase logo' height=120 width=530><br/>
 <br/><br/>
 
 #### Daily Transactions and Cumulative Revenue
