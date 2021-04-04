@@ -798,7 +798,7 @@ FROM (
 
 ) as a
 ```
-<img src='img/daily-revenue.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/daily-revenue.png' alt='metabase logo' height=250 width=750><br/>
 <br/><br/>
 
 #### Most Popular Products
