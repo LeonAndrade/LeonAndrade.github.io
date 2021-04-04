@@ -425,11 +425,11 @@ This tell us that **while the average transaction is just over $500.00, half of 
 
 The standard deviation is roughly 3 times the average, and the maximum price more than $160k, which indicates a large deviation probably due to some large outliers.
 
-In other words, **when we ask about averages, we are often looking for a *"center of balance"*** in those numbers. One way to get a feel of this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
+In other words, **when we ask about averages, we are often looking for a *"center of balance"*** in those numbers. One way to get a feel for this center, is by looking at the *skewness* of the data, or how *unbalanced* it is.
 
 With this in mind we know there is a higher concentration of transactions with lower values that decreases fast towards higher values.
 
-let's plot this with some python:
+let's make this more visual, and plot with the help of some python:
 
 ```python
 import pandas as pd
