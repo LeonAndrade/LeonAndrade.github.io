@@ -505,6 +505,7 @@ stockcode|description                       |transactions
 21931    |JUMBO STORAGE BAG SUKI            |2364
 22411    |JUMBO SHOPPER VINTAGE RED PAISLEY |2215
 22469    |HEART OF WICKER SMALL             |2174
+
 <br/><br/>
 
 - **By total quantity sold**
@@ -531,6 +532,7 @@ stockcode|description                       |total_quantity
 22197    |SMALL POPCORN HOLDER              |49616
 21212    |PACK OF 72 RETROSPOT CAKE CASES   |49344
 21212    |PACK OF 72 RETRO SPOT CAKE CASES  |46106
+
 <br/><br/>
 
 - **By revenue generated**
