@@ -839,7 +839,7 @@ GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 20
 ```
-<img src='img/top20-customers-metabase.png' alt='metabase logo' height=800 width=500><br/>
+<img src='img/top20-customers-metabase.png' alt='metabase logo' height=600 width=300><br/>
 <br/><br/>
 
 #### Top 10 Products - Transactions
