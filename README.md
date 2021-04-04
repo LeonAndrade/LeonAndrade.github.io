@@ -257,7 +257,7 @@ Most customers are from the United Kingdom, followed by a few neighbouring count
 ```sql
 SELECT
     CAST(date_trunc('d',invoicedate) AS DATE) AS day,
-    COUNT(distinct invoice) AS daily_transactions
+    COUNT(distinct invoice)                   AS daily_transactions
 FROM online_retail
 GROUP BY day
 ORDER BY daily_transactions DESC
@@ -399,7 +399,7 @@ Max           |168469.60
 
 <br/>
 
-> SQL is an amazing lanague and can do most of the work, but it can also get quite verbose for simple things. Using the python library pandas we can obtain the same results with much less typing!
+> SQL is an amazing language and can do most of the work, but it can also get quite verbose for simple things. Using the python library pandas we can obtain the same results with much less typing!
 > ```python
 > import pandas as pd
 > sql = """
