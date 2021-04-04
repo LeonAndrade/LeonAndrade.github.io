@@ -859,7 +859,7 @@ GROUP BY 1, 2
 ORDER BY 3 desc
 LIMIT 10
 ```
-<img src='img/top10-products-transactions.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/top10-products-transactions.png' alt='metabase logo' height=340 width=600><br/>
 <br/><br/>
 
 #### Top 10 Products - Quantity
@@ -879,5 +879,5 @@ GROUP BY 1, 2
 ORDER BY 4 desc
 LIMIT 10
 ```
-<img src='img/top10-products-quantity.png' alt='metabase logo' height=120 width=230><br/>
+<img src='img/top10-products-quantity.png' alt='metabase logo' height=340 width=600><br/>
 <br/><br/>
