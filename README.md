@@ -84,7 +84,6 @@ The dataset has **8 columns** and around **1 million rows**. Let's see what else
 
 #### Are there any null/missing values?
 ```sql
-SELECT
 SELECT 'invoice'     AS column_name, SUM(case when invoice     is NULL then 1 else 0 end) AS null_values FROM online_retail
 UNION
 SELECT 'stockcode'   AS column_name, SUM(case when stockcode   is NULL then 1 else 0 end) AS null_values FROM online_retail
@@ -101,7 +100,6 @@ SELECT 'customer_id' AS column_name, SUM(case when customer_id is NULL then 1 el
 UNION
 SELECT 'country'     AS column_name, SUM(case when country     is NULL then 1 else 0 end) AS null_values FROM online_retail
 ORDER BY null_values DESC
-FROM online_retail
 ```
 column_name|null_values
 :---------:|:---------:
@@ -143,7 +141,7 @@ country	   |character varying
 From a quick look at this we can say that this data is about orders made by customers.
 
   - Products:
-    - `stockcode`: Categorical / Serial. It seems to be the unique ID of a product.
+    - `stockcode`: Categorical / Serial. Possibly the unique ID of a product.
     - `price`: Quantitative. Assuming its the unitary price of a product.
     - `description`: Categorical. Description of the product.
 
