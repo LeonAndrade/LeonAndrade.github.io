@@ -429,10 +429,11 @@ In other words, **when we ask about averages, we are often looking for a *"cente
 
 With this in mind we know there is a higher concentration of transactions with lower values that decreases fast towards higher values.
 
-let's make this more visual, and plot with the help of some python:
+let's make this more visual, and plot with the help of some python libraries:
 
 ```python
 import pandas as pd
+from  matplotlib import pyplot as plt
 
 sql = """
 
